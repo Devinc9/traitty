@@ -1,0 +1,134 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ground:#F7F4F1; --surface:#FFFFFF; --surface2:#F0EBE8;
+  --ink:#241C2E; --ink2:#4A4055; --ink3:#78708A;
+  --rule:#DED6DB; --violet:#6A4A9E; --violet-s:#EFE9F7;
+  --fact:#2C5561; --fact-s:#E4EDEF; --ochre:#9C6218; --ochre-s:#F6EDE0;
+  --good:#3F6B45; --good-s:#E7F0E7; --bad:#8E3A3A; --bad-s:#F6E7E6;
+}
+html,body{width:1120px;height:1584px}
+body{background:var(--ground);color:var(--ink);font-family:"Noto Sans TC",sans-serif;
+  padding:64px 64px 52px;display:flex;flex-direction:column}
+body>*{flex:0 0 auto}
+.top{border-bottom:2px solid var(--ink);padding-bottom:20px;display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.eyebrow{font-size:15px;letter-spacing:.28em;color:var(--violet);font-weight:700}
+h1{font-family:"Noto Serif TC",serif;font-size:57px;line-height:1.2;font-weight:900;margin-top:12px;letter-spacing:-.01em}
+.deck{font-size:19px;color:var(--ink2);line-height:1.6;margin-top:12px;max-width:660px}
+.badge{font-size:15px;color:var(--ochre);border:1px solid rgba(156,98,24,.4);background:var(--ochre-s);
+  padding:9px 16px;border-radius:999px;white-space:nowrap;font-weight:500}
+.stats{display:flex;gap:0;margin-top:20px;border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--surface)}
+.stat{flex:1;padding:14px 20px;border-right:1px solid var(--rule)}
+.stat:last-child{border-right:0}
+.stat dt{font-size:13px;letter-spacing:.14em;color:var(--ink3);font-weight:500}
+.stat dd{font-size:22px;font-weight:700;margin-top:5px}
+.stat dd b{font-size:30px;color:var(--violet)}
+h2{font-family:"Noto Serif TC",serif;font-size:28px;font-weight:900;margin-top:27px;
+  padding-left:16px;border-left:5px solid var(--violet);line-height:1.35}
+.h2note{font-size:17px;color:var(--ink3);font-weight:400;margin-top:6px;padding-left:21px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.pc{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:17px 18px}
+.pc .n{font-family:"Noto Serif TC",serif;font-size:26px;font-weight:900}
+.pc .chip{display:inline-block;background:var(--fact-s);color:var(--fact);font-size:13px;
+  padding:2px 9px;border-radius:5px;margin-top:8px;font-weight:500}
+.pc .o{font-size:16px;line-height:1.65;color:var(--ink2);margin-top:10px}
+.flow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:16px}
+.fc{background:var(--violet-s);border-radius:12px;padding:17px 18px;border:1px solid rgba(106,74,158,.2)}
+.fc .d{font-size:15px;letter-spacing:.16em;color:var(--violet);font-weight:700}
+.fc .t{font-size:20px;font-weight:700;margin-top:7px;line-height:1.45}
+.fc .b{font-size:15.5px;color:var(--ink2);line-height:1.6;margin-top:9px}
+.cv{margin-top:16px;display:flex;flex-direction:column;gap:9px}
+.cvr{display:grid;grid-template-columns:112px 1fr 26px 1.3fr;gap:16px;align-items:center;
+  background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:14px 20px}
+.cvr .n{font-family:"Noto Serif TC",serif;font-size:23px;font-weight:900}
+.cvr .b4{font-size:16.5px;color:var(--ink3);line-height:1.5}
+.cvr .ar{color:var(--violet);font-size:23px;text-align:center}
+.cvr .af{font-size:16.5px;line-height:1.5;font-weight:500}
+.cvr .lbl{display:block;font-size:11.5px;letter-spacing:.16em;font-weight:700;margin-bottom:3px}
+.cvr .b4 .lbl{color:var(--ink3)}
+.cvr .af .lbl{color:var(--violet)}
+.claims{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.cb{border-radius:12px;padding:17px 20px}
+.cb.y{background:var(--good-s);border:1px solid rgba(63,107,69,.3)}
+.cb.n{background:var(--bad-s);border:1px solid rgba(142,58,58,.3)}
+.cb h3{font-size:17px;margin-bottom:10px;letter-spacing:.02em}
+.cb.y h3{color:var(--good)} .cb.n h3{color:var(--bad)}
+.cb li{font-size:16px;line-height:1.62;margin-left:18px;margin-bottom:5px}
+footer{margin-top:auto;padding-top:18px;border-top:1px solid var(--rule);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:26px}
+.brand{font-size:23px;font-weight:700}
+.brand small{display:block;font-size:14px;color:var(--ink3);font-weight:400;letter-spacing:.1em;margin-top:4px}
+.disc{font-size:13.5px;color:var(--ink3);line-height:1.6;max-width:600px;text-align:right}
+</style></head><body>
+  <div class="top">
+    <div>
+      <div class="eyebrow">TRAITTY AI ／ CASE 04</div>
+      <h1>新人到職前 14 天</h1>
+      <p class="deck">三位新人接受相同的基礎訓練，卻出現三種完全不同的訊號。主管用三次提問，把「說不上來的感覺」變成可以問、可以做、可以追蹤的管理依據。</p>
+    </div>
+    <div class="badge">情境模擬案例</div>
+  </div>
+
+  <dl class="stats">
+    <div class="stat"><dt>產業背景</dt><dd>連鎖餐飲門市前場</dd></div>
+    <div class="stat"><dt>觀察期（DAY 3→14）</dt><dd><b>12</b> 天</dd></div>
+    <div class="stat"><dt>AI 使用次數</dt><dd><b>3</b> 次整合提問</dd></div>
+    <div class="stat"><dt>紀錄成本</dt><dd>每人每天 <b>&lt;1</b> 分</dd></div>
+  </dl>
+
+  <h2>三個看起來都像「適應不良」的訊號</h2>
+  <div class="three">
+    <div class="pc"><div class="n">Roger</div><span class="chip">現場事實</span>
+      <p class="o">兩次問能不能跳過重複練習。動作快，但有 2 次點餐輸入需資深同仁更正。</p></div>
+    <div class="pc"><div class="n">Eddy</div><span class="chip">現場事實</span>
+      <p class="o">每次被問都說「都還好」。尖峰幾乎不主動提問，一次交接沒說完整。</p></div>
+    <div class="pc"><div class="n">Eva H</div><span class="chip">現場事實</span>
+      <p class="o">品質穩定，但連兩次收班後多留 25–30 分鐘，對獨立顧尖峰有些猶豫。</p></div>
+  </div>
+
+  <h2>主管做的事：三次提問，每次只決定「現在」與「下一週」</h2>
+  <p class="h2note">主管不必描述任何人的性格，只需說清楚：我的情境、我看到的事、我想知道的事。</p>
+  <div class="flow">
+    <div class="fc"><div class="d">DAY 3　即時情境</div><div class="t">早期辨識</div>
+      <p class="b">拿到三個待驗證假設、三句可直接問的話、三個帶教微調。</p></div>
+    <div class="fc"><div class="d">DAY 7　每週更新</div><div class="t">修正假設</div>
+      <p class="b">用現場紀錄檢查原本的推論，保留反例與其他可能原因。</p></div>
+    <div class="fc"><div class="d">DAY 14　階段回顧</div><div class="t">評估穩定性</div>
+      <p class="b">複合假設拆開判斷，決定哪些做法保留、減少或更換。</p></div>
+  </div>
+
+  <h2>14 天後，判斷收斂了</h2>
+  <div class="cv">
+    <div class="cvr"><div class="n">Roger</div>
+      <div class="b4"><span class="lbl">DAY 3 的印象</span>動作太快，所以容易出錯</div>
+      <div class="ar">→</div>
+      <div class="af"><span class="lbl">DAY 14 的判斷</span>一般流程可以穩定；主要卡在忙碌時的複雜欄位確認</div></div>
+    <div class="cvr"><div class="n">Eddy</div>
+      <div class="b4"><span class="lbl">DAY 3 的印象</span>都說沒問題，可能不願意說</div>
+      <div class="ar">→</div>
+      <div class="af"><span class="lbl">DAY 14 的判斷</span>一般問句資訊不足；是否提問也取決於有沒有遇到新例外</div></div>
+    <div class="cvr"><div class="n">Eva H</div>
+      <div class="b4"><span class="lbl">DAY 3 的印象</span>不敢承擔尖峰，確認太久</div>
+      <div class="ar">→</div>
+      <div class="af"><span class="lbl">DAY 14 的判斷</span>一般尖峰已有掌握；剩餘困難在少見複合異動與求助時點</div></div>
+  </div>
+
+  <div class="claims">
+    <div class="cb y"><h3>✓ 這個案例可以主張</h3><ul>
+      <li>提早辨識新人不同的適應卡點</li>
+      <li>將特質資料轉成主管能直接採取的行動</li>
+      <li>用現場事實修正初始特質推論</li>
+      <li>提升帶教的個人化與一致性</li></ul></div>
+    <div class="cb n"><h3>✕ 這個案例不主張</h3><ul>
+      <li>已降低新人離職率或提高留任率</li>
+      <li>行為改善由 Traitty AI 單獨造成</li>
+      <li>能判定誰可以獨立站櫃</li>
+      <li>特質直接造成錯誤、沉默或多留時間</li></ul></div>
+  </div>
+
+  <footer>
+    <div class="brand">Traitty AI<small>人才決策・團隊互動 Copilot</small></div>
+    <p class="disc">本案為情境模擬案例：現場紀錄由多領域 SME 依真實餐飲現場條件建立，Traitty AI 的三次回答為實際產品輸出。短期留任率與離職率需由真實企業試點驗證。</p>
+  </footer>
+</body></html>
