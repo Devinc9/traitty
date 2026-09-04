@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Traitty by WePredict 合作夥伴說明頁：我們在做什麼、解決什麼，以及四項已上架經濟部產業發展署 AI 工具庫的方案連結。">
+<title>WePredict - Traitty AI 產發署補助資訊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --ink:#050509;
+  --ink-2:#0b0b14;
+  --surface:rgba(255,255,255,0.035);
+  --surface-2:rgba(255,255,255,0.055);
+  --line:rgba(236,234,246,0.12);
+  --line-soft:rgba(236,234,246,0.07);
+  --text:#ECEAF6;
+  --text-2:rgba(236,234,246,0.68);
+  --text-3:rgba(236,234,246,0.45);
+  --primary:#827AFE;
+  --primary-soft:rgba(130,122,254,0.14);
+  --primary-line:rgba(130,122,254,0.32);
+  --secondary:#E860B8;
+  --teal:#5DCAA5;
+  --amber:#EF9F27;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%}
+
+/* ambient */
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(90px)}
+.orb-a{width:620px;height:620px;background:rgba(130,122,254,0.20);top:-260px;left:-180px;animation:driftA 24s ease-in-out infinite alternate}
+.orb-b{width:520px;height:520px;background:rgba(232,96,184,0.16);bottom:-220px;right:-160px;animation:driftB 30s ease-in-out infinite alternate}
+.orb-c{width:380px;height:380px;background:rgba(93,202,165,0.08);top:46%;left:52%;animation:driftC 26s ease-in-out infinite alternate}
+@keyframes driftA{to{transform:translate(70px,50px)}}
+@keyframes driftB{to{transform:translate(-60px,-70px)}}
+@keyframes driftC{to{transform:translate(-50px,40px) scale(1.15)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}}
+
+.shell{position:relative;z-index:1}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+
+/* nav */
+.nav{
+  position:sticky;top:0;z-index:20;
+  background:rgba(5,5,9,0.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:baseline;gap:10px;min-width:0}
+.wordmark{height:30px;display:block;flex:0 0 auto}
+.wordmark svg{height:30px;width:auto;display:block}
+.by{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase;white-space:nowrap}
+@media(max-width:560px){.by{display:none}}
+
+/* hero */
+.hero{padding:64px 0 8px;position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+  color:var(--teal);
+  background:rgba(93,202,165,0.09);border:1px solid rgba(93,202,165,0.28);
+  padding:6px 14px;border-radius:100px;
+}
+h1{
+  font-size:clamp(30px,4.6vw,48px);font-weight:900;line-height:1.28;letter-spacing:-.01em;
+  margin:22px 0 0;text-wrap:balance;max-width:16em;
+}
+h1 .g{background:linear-gradient(110deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--secondary)}
+.lede{font-size:18px;color:var(--text-2);margin:20px 0 0;max-width:34em}
+.savings{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.save{
+  font-weight:700;font-size:15px;color:var(--text);
+  padding:7px 16px;border-radius:10px;
+  background:linear-gradient(120deg,rgba(130,122,254,0.16),rgba(232,96,184,0.10));
+  border:1px solid var(--primary-line);
+}
+
+/* sections */
+section{padding:56px 0;border-top:1px solid var(--line-soft)}
+section:first-of-type{border-top:none}
+.sec-label{
+  font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--primary);display:block;margin-bottom:10px;
+}
+h2{font-size:clamp(22px,2.8vw,30px);font-weight:700;line-height:1.4;margin:0;text-wrap:balance}
+.sub{color:var(--text-2);margin:12px 0 0;max-width:38em}
+
+/* flow */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:0;margin-top:30px}
+.step{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.step-mid{background:rgba(130,122,254,0.10);border-color:var(--primary-line);box-shadow:0 0 44px rgba(130,122,254,0.14)}
+.step-n{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--text-3)}
+.step-mid .step-n{color:var(--primary)}
+.step-t{font-size:17px;font-weight:700;line-height:1.5}
+.step-d{font-size:14px;color:var(--text-2);line-height:1.7}
+.arrow{display:flex;align-items:center;justify-content:center;padding:0 12px;color:var(--primary);font-size:18px}
+@media(max-width:760px){
+  .flow{grid-template-columns:1fr}
+  .arrow{padding:6px 0;transform:rotate(90deg)}
+}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{
+  font-size:13px;color:var(--text-2);padding:5px 14px;border-radius:100px;
+  background:var(--surface);border:1px solid var(--line);
+}
+
+/* problems */
+.problems{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+@media(max-width:700px){.problems{grid-template-columns:1fr}}
+.prob{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.prob-tag{
+  align-self:flex-start;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  color:var(--secondary);background:rgba(232,96,184,0.10);border:1px solid rgba(232,96,184,0.26);
+  padding:3px 11px;border-radius:100px;
+}
+.prob-t{font-size:16px;font-weight:700;line-height:1.55}
+.prob-d{font-size:14px;color:var(--text-2);line-height:1.75}
+
+/* solutions */
+.sols{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.sol{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:20px 22px;transition:border-color .2s,background .2s;
+}
+.sol:hover{border-color:var(--primary-line);background:var(--surface-2)}
+.sol-n{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--primary);line-height:1;letter-spacing:-.02em}
+.sol-body{min-width:0}
+.sol-tier{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--text-3);text-transform:uppercase}
+.sol-t{font-size:17px;font-weight:700;line-height:1.5;margin-top:3px}
+.sol-d{font-size:14px;color:var(--text-2);line-height:1.7;margin-top:4px}
+.sol-go{
+  font-family:var(--sans);font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;
+  color:var(--text);padding:8px 16px;border-radius:100px;
+  border:1px solid var(--line);background:rgba(255,255,255,0.04);
+}
+.sol-go:hover{border-color:var(--primary-line);color:#fff;background:var(--primary-soft)}
+@media(max-width:700px){
+  .sol{grid-template-columns:auto 1fr;row-gap:14px}
+  .sol-go{grid-column:1 / -1;justify-self:start}
+}
+
+/* trust */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+@media(max-width:640px){.stats{grid-template-columns:1fr}}
+.stat{border-left:2px solid var(--primary-line);padding:2px 0 2px 18px}
+.stat-n{font-family:var(--mono);font-size:26px;font-weight:600;line-height:1.2;color:var(--text);font-variant-numeric:tabular-nums}
+.stat-t{font-size:14px;font-weight:700;margin-top:2px}
+.stat-d{font-size:13px;color:var(--text-3);line-height:1.7}
+.logos{
+  margin-top:24px;padding:16px 20px;border-radius:14px;
+  background:var(--surface);border:1px solid var(--line);
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;
+}
+.logos-l{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--text-3);text-transform:uppercase}
+.logos-n{font-size:14px;font-weight:700;color:var(--text-2)}
+
+/* pitch block */
+.pitch{
+  margin-top:28px;padding:22px 24px;border-radius:16px;
+  background:linear-gradient(120deg,rgba(130,122,254,0.13),rgba(232,96,184,0.08));
+  border:1px solid var(--primary-line);
+}
+.pitch-l{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);display:block;margin-bottom:10px}
+.pitch p{margin:0;font-size:16px;color:var(--text);line-height:1.9}
+
+/* links */
+.link-group{margin-top:26px}
+.link-group + .link-group{margin-top:34px}
+.lg-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.lg-title{font-size:17px;font-weight:700}
+.lg-count{font-family:var(--mono);font-size:12px;color:var(--text-3)}
+.link-row{
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;
+  padding:14px 0;border-bottom:1px solid var(--line-soft);
+}
+.link-row:last-child{border-bottom:none}
+.link-name{font-size:15px;font-weight:700;line-height:1.5}
+.link-name .n{font-family:var(--mono);font-weight:600;color:var(--primary);margin-right:8px}
+.link-url{
+  font-family:var(--mono);font-size:12.5px;color:rgba(236,234,246,0.56);line-height:1.6;
+  word-break:break-all;margin-top:3px;
+}
+.link-acts{display:flex;gap:8px;align-items:center}
+.act{
+  font-family:var(--sans);font-size:12.5px;font-weight:700;cursor:pointer;text-decoration:none;
+  padding:7px 14px;border-radius:100px;border:1px solid var(--line);
+  background:rgba(255,255,255,0.04);color:var(--text);white-space:nowrap;
+}
+.act:hover{border-color:var(--primary-line);background:var(--primary-soft)}
+.act:focus-visible,.sol-go:focus-visible,.nav-cta:focus-visible,a:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.act.done{color:var(--teal);border-color:rgba(93,202,165,0.4);background:rgba(93,202,165,0.10)}
+@media(max-width:640px){
+  .link-row{grid-template-columns:1fr;gap:10px}
+  .link-acts{justify-content:flex-start}
+}
+
+/* contact */
+.contact{
+  margin-top:8px;padding:30px 28px;border-radius:20px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(130,122,254,0.16),rgba(5,5,9,0) 70%);
+  border:1px solid var(--primary-line);
+}
+.contact-acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+.btn-p{
+  font-size:15px;font-weight:700;text-decoration:none;color:#fff;
+  padding:12px 26px;border-radius:100px;
+  background:linear-gradient(120deg,var(--primary),var(--secondary));
+}
+.btn-p:hover{opacity:.9}
+
+/* note + footer */
+.note{
+  margin-top:26px;padding:14px 18px;border-radius:12px;
+  background:rgba(239,159,39,0.07);border:1px solid rgba(239,159,39,0.22);
+  font-size:13.5px;color:rgba(236,234,246,0.72);line-height:1.75;
+}
+.note b{color:var(--amber);font-weight:700}
+footer{
+  border-top:1px solid var(--line-soft);margin-top:56px;padding:26px 0 44px;
+  display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between;
+  font-family:var(--mono);font-size:12px;color:var(--text-3);
+}
+footer a{color:var(--text-2);text-decoration:none}
+footer a:hover{color:var(--text)}
+</style>
+
+</head>
+<body>
+
+<div class="ambient" aria-hidden="true">
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
+</div>
+
+<div class="shell">
+
+<nav class="nav">
+  <div class="nav-in">
+    <div class="brand">
+      <div class="wordmark" role="img" aria-label="Traitty"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" zoomAndPan="magnify" viewBox="0 0 1440 562.499983" height="750" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><filter x="0%" y="0%" width="100%" height="100%" id="44cdecea9e"><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" color-interpolation-filters="sRGB"/></filter><g/><clipPath id="bba5257c0c"><path d="M 0.640625 0 L 1439.359375 0 L 1439.359375 562 L 0.640625 562 Z M 0.640625 0 " clip-rule="nonzero"/></clipPath><clipPath id="9812db9cc4"><path d="M 0.640625 0 L 1439.359375 0 L 1439.359375 562 L 0.640625 562 Z M 0.640625 0 " clip-rule="nonzero"/></clipPath><clipPath id="bea4009ea9"><path d="M 0.640625 0 L 1439.359375 0 L 1439.359375 562 L 0.640625 562 Z M 0.640625 0 " clip-rule="nonzero"/></clipPath><clipPath id="8c2b129f81"><path d="M 0.640625 0 L 1439.359375 0 L 1439.359375 562 L 0.640625 562 Z M 0.640625 0 " clip-rule="nonzero"/></clipPath><linearGradient x1="110.328141" gradientTransform="matrix(2.209863, 0, 0, 2.212828, 1.112294, 93.00293)" y1="-152.57085" x2="562.836946" gradientUnits="userSpaceOnUse" y2="299.939015" id="46c680e24b"><stop stop-opacity="1" stop-color="rgb(31.959534%, 43.907166%, 99.931335%)" offset="0"/><stop stop-opacity="1" stop-color="rgb(32.237244%, 43.890381%, 99.836731%)" offset="0.00390625"/><stop stop-opacity="1" stop-color="rgb(32.516479%, 43.875122%, 99.742126%)" offset="0.0078125"/><stop stop-opacity="1" stop-color="rgb(32.795715%, 43.858337%, 99.647522%)" offset="0.0117188"/><stop stop-opacity="1" stop-color="rgb(33.074951%, 43.843079%, 99.552917%)" offset="0.015625"/><stop stop-opacity="1" stop-color="rgb(33.352661%, 43.826294%, 99.458313%)" offset="0.0195313"/><stop stop-opacity="1" stop-color="rgb(33.631897%, 43.811035%, 99.363708%)" offset="0.0234375"/><stop stop-opacity="1" stop-color="rgb(33.911133%, 43.79425%, 99.269104%)" offset="0.0273438"/><stop stop-opacity="1" stop-color="rgb(34.190369%, 43.778992%, 99.1745%)" offset="0.03125"/><stop stop-opacity="1" stop-color="rgb(34.468079%, 43.762207%, 99.079895%)" offset="0.0351563"/><stop stop-opacity="1" stop-color="rgb(34.747314%, 43.746948%, 98.985291%)" offset="0.0390625"/><stop stop-opacity="1" stop-color="rgb(35.025024%, 43.730164%, 98.890686%)" offset="0.0429688"/><stop stop-opacity="1" stop-color="rgb(35.30426%, 43.714905%, 98.797607%)" offset="0.046875"/><stop stop-opacity="1" stop-color="rgb(35.583496%, 43.69812%, 98.703003%)" offset="0.0507813"/><stop stop-opacity="1" stop-color="rgb(35.862732%, 43.682861%, 98.608398%)" offset="0.0546875"/><stop stop-opacity="1" stop-color="rgb(36.140442%, 43.666077%, 98.513794%)" offset="0.0585938"/><stop stop-opacity="1" stop-color="rgb(36.419678%, 43.650818%, 98.419189%)" offset="0.0625"/><stop stop-opacity="1" stop-color="rgb(36.698914%, 43.634033%, 98.324585%)" offset="0.0664062"/><stop stop-opacity="1" stop-color="rgb(36.978149%, 43.618774%, 98.22998%)" offset="0.0703125"/><stop stop-opacity="1" stop-color="rgb(37.255859%, 43.60199%, 98.135376%)" offset="0.0742188"/><stop stop-opacity="1" stop-color="rgb(37.535095%, 43.586731%, 98.040771%)" offset="0.078125"/><stop stop-opacity="1" stop-color="rgb(37.812805%, 43.569946%, 97.946167%)" offset="0.0820313"/><stop stop-opacity="1" stop-color="rgb(38.092041%, 43.554688%, 97.851562%)" offset="0.0859375"/><stop stop-opacity="1" stop-color="rgb(38.371277%, 43.537903%, 97.756958%)" offset="0.0898438"/><stop stop-opacity="1" stop-color="rgb(38.650513%, 43.522644%, 97.662354%)" offset="0.09375"/><stop stop-opacity="1" stop-color="rgb(38.928223%, 43.507385%, 97.567749%)" offset="0.0976563"/><stop stop-opacity="1" stop-color="rgb(39.207458%, 43.492126%, 97.473145%)" offset="0.101563"/><stop stop-opacity="1" stop-color="rgb(39.486694%, 43.475342%, 97.37854%)" offset="0.105469"/><stop stop-opacity="1" stop-color="rgb(39.76593%, 43.460083%, 97.283936%)" offset="0.109375"/><stop stop-opacity="1" stop-color="rgb(40.04364%, 43.443298%, 97.189331%)" offset="0.113281"/><stop stop-opacity="1" stop-color="rgb(40.322876%, 43.42804%, 97.094727%)" offset="0.117188"/><stop stop-opacity="1" stop-color="rgb(40.600586%, 43.411255%, 97.000122%)" offset="0.121094"/><stop stop-opacity="1" stop-color="rgb(40.879822%, 43.395996%, 96.907043%)" offset="0.125"/><stop stop-opacity="1" stop-color="rgb(41.159058%, 43.379211%, 96.812439%)" offset="0.128906"/><stop stop-opacity="1" stop-color="rgb(41.438293%, 43.363953%, 96.717834%)" offset="0.132812"/><stop stop-opacity="1" stop-color="rgb(41.716003%, 43.347168%, 96.62323%)" offset="0.136719"/><stop stop-opacity="1" stop-color="rgb(41.995239%, 43.331909%, 96.528625%)" offset="0.140625"/><stop stop-opacity="1" stop-color="rgb(42.274475%, 43.315125%, 96.434021%)" offset="0.144531"/><stop stop-opacity="1" stop-color="rgb(42.553711%, 43.299866%, 96.339417%)" offset="0.148438"/><stop stop-opacity="1" stop-color="rgb(42.831421%, 43.283081%, 96.244812%)" offset="0.152344"/><stop stop-opacity="1" stop-color="rgb(43.110657%, 43.267822%, 96.150208%)" offset="0.15625"/><stop stop-opacity="1" stop-color="rgb(43.388367%, 43.251038%, 96.055603%)" offset="0.160156"/><stop stop-opacity="1" stop-color="rgb(43.667603%, 43.235779%, 95.960999%)" offset="0.164063"/><stop stop-opacity="1" stop-color="rgb(43.946838%, 43.218994%, 95.866394%)" offset="0.167969"/><stop stop-opacity="1" stop-color="rgb(44.226074%, 43.203735%, 95.77179%)" offset="0.171875"/><stop stop-opacity="1" stop-color="rgb(44.503784%, 43.186951%, 95.677185%)" offset="0.175781"/><stop stop-opacity="1" stop-color="rgb(44.78302%, 43.171692%, 95.582581%)" offset="0.179688"/><stop stop-opacity="1" stop-color="rgb(45.062256%, 43.154907%, 95.487976%)" offset="0.183594"/><stop stop-opacity="1" stop-color="rgb(45.341492%, 43.139648%, 95.393372%)" offset="0.1875"/><stop stop-opacity="1" stop-color="rgb(45.619202%, 43.122864%, 95.298767%)" offset="0.191406"/><stop stop-opacity="1" stop-color="rgb(45.898438%, 43.107605%, 95.204163%)" offset="0.195313"/><stop stop-opacity="1" stop-color="rgb(46.176147%, 43.09082%, 95.109558%)" offset="0.199219"/><stop stop-opacity="1" stop-color="rgb(46.455383%, 43.075562%, 95.014954%)" offset="0.203125"/><stop stop-opacity="1" stop-color="rgb(46.734619%, 43.058777%, 94.920349%)" offset="0.207031"/><stop stop-opacity="1" stop-color="rgb(47.013855%, 43.043518%, 94.827271%)" offset="0.210938"/><stop stop-opacity="1" stop-color="rgb(47.291565%, 43.026733%, 94.732666%)" offset="0.214844"/><stop stop-opacity="1" stop-color="rgb(47.570801%, 43.011475%, 94.638062%)" offset="0.21875"/><stop stop-opacity="1" stop-color="rgb(47.850037%, 42.99469%, 94.543457%)" offset="0.222656"/><stop stop-opacity="1" stop-color="rgb(48.129272%, 42.979431%, 94.448853%)" offset="0.226563"/><stop stop-opacity="1" stop-color="rgb(48.406982%, 42.962646%, 94.354248%)" offset="0.230469"/><stop stop-opacity="1" stop-color="rgb(48.686218%, 42.947388%, 94.259644%)" offset="0.234375"/><stop stop-opacity="1" stop-color="rgb(48.963928%, 42.930603%, 94.165039%)" offset="0.238281"/><stop stop-opacity="1" stop-color="rgb(49.243164%, 42.915344%, 94.070435%)" offset="0.242188"/><stop stop-opacity="1" stop-color="rgb(49.5224%, 42.89856%, 93.97583%)" offset="0.246094"/><stop stop-opacity="1" stop-color="rgb(49.801636%, 42.883301%, 93.881226%)" offset="0.25"/><stop stop-opacity="1" stop-color="rgb(50.079346%, 42.866516%, 93.786621%)" offset="0.253906"/><stop stop-opacity="1" stop-color="rgb(50.358582%, 42.851257%, 93.692017%)" offset="0.257813"/><stop stop-opacity="1" stop-color="rgb(50.637817%, 42.834473%, 93.597412%)" offset="0.261719"/><stop stop-opacity="1" stop-color="rgb(50.917053%, 42.819214%, 93.502808%)" offset="0.265625"/><stop stop-opacity="1" stop-color="rgb(51.194763%, 42.802429%, 93.408203%)" offset="0.269531"/><stop stop-opacity="1" stop-color="rgb(51.473999%, 42.78717%, 93.313599%)" offset="0.273438"/><stop stop-opacity="1" stop-color="rgb(51.751709%, 42.770386%, 93.218994%)" offset="0.277344"/><stop stop-opacity="1" stop-color="rgb(52.030945%, 42.755127%, 93.12439%)" offset="0.28125"/><stop stop-opacity="1" stop-color="rgb(52.310181%, 42.738342%, 93.029785%)" offset="0.285156"/><stop stop-opacity="1" stop-color="rgb(52.589417%, 42.723083%, 92.935181%)" offset="0.289063"/><stop stop-opacity="1" stop-color="rgb(52.867126%, 42.706299%, 92.840576%)" offset="0.292969"/><stop stop-opacity="1" stop-color="rgb(53.146362%, 42.69104%, 92.747498%)" offset="0.296875"/><stop stop-opacity="1" stop-color="rgb(53.425598%, 42.674255%, 92.652893%)" offset="0.300781"/><stop stop-opacity="1" stop-color="rgb(53.704834%, 42.658997%, 92.558289%)" offset="0.304688"/><stop stop-opacity="1" stop-color="rgb(53.982544%, 42.642212%, 92.463684%)" offset="0.308594"/><stop stop-opacity="1" stop-color="rgb(54.26178%, 42.626953%, 92.36908%)" offset="0.3125"/><stop stop-opacity="1" stop-color="rgb(54.53949%, 42.610168%, 92.274475%)" offset="0.316406"/><stop stop-opacity="1" stop-color="rgb(54.818726%, 42.59491%, 92.179871%)" offset="0.320313"/><stop stop-opacity="1" stop-color="rgb(55.097961%, 42.578125%, 92.085266%)" offset="0.324219"/><stop stop-opacity="1" stop-color="rgb(55.377197%, 42.562866%, 91.990662%)" offset="0.328125"/><stop stop-opacity="1" stop-color="rgb(55.654907%, 42.546082%, 91.896057%)" offset="0.332031"/><stop stop-opacity="1" stop-color="rgb(55.934143%, 42.530823%, 91.801453%)" offset="0.335938"/><stop stop-opacity="1" stop-color="rgb(56.213379%, 42.514038%, 91.706848%)" offset="0.339844"/><stop stop-opacity="1" stop-color="rgb(56.492615%, 42.498779%, 91.612244%)" offset="0.34375"/><stop stop-opacity="1" stop-color="rgb(56.770325%, 42.481995%, 91.517639%)" offset="0.347656"/><stop stop-opacity="1" stop-color="rgb(57.049561%, 42.466736%, 91.423035%)" offset="0.351563"/><stop stop-opacity="1" stop-color="rgb(57.327271%, 42.449951%, 91.32843%)" offset="0.355469"/><stop stop-opacity="1" stop-color="rgb(57.606506%, 42.434692%, 91.233826%)" offset="0.359375"/><stop stop-opacity="1" stop-color="rgb(57.885742%, 42.417908%, 91.139221%)" offset="0.363281"/><stop stop-opacity="1" stop-color="rgb(58.164978%, 42.402649%, 91.044617%)" offset="0.367188"/><stop stop-opacity="1" stop-color="rgb(58.442688%, 42.385864%, 90.950012%)" offset="0.371094"/><stop stop-opacity="1" stop-color="rgb(58.721924%, 42.370605%, 90.855408%)" offset="0.375"/><stop stop-opacity="1" stop-color="rgb(59.00116%, 42.353821%, 90.760803%)" offset="0.378906"/><stop stop-opacity="1" stop-color="rgb(59.280396%, 42.338562%, 90.667725%)" offset="0.382813"/><stop stop-opacity="1" stop-color="rgb(59.558105%, 42.321777%, 90.57312%)" offset="0.386719"/><stop stop-opacity="1" stop-color="rgb(59.837341%, 42.306519%, 90.478516%)" offset="0.390625"/><stop stop-opacity="1" stop-color="rgb(60.115051%, 42.289734%, 90.383911%)" offset="0.394531"/><stop stop-opacity="1" stop-color="rgb(60.394287%, 42.274475%, 90.289307%)" offset="0.398438"/><stop stop-opacity="1" stop-color="rgb(60.673523%, 42.25769%, 90.194702%)" offset="0.402344"/><stop stop-opacity="1" stop-color="rgb(60.952759%, 42.242432%, 90.100098%)" offset="0.40625"/><stop stop-opacity="1" stop-color="rgb(61.230469%, 42.225647%, 90.005493%)" offset="0.410156"/><stop stop-opacity="1" stop-color="rgb(61.509705%, 42.210388%, 89.910889%)" offset="0.414063"/><stop stop-opacity="1" stop-color="rgb(61.78894%, 42.193604%, 89.816284%)" offset="0.417969"/><stop stop-opacity="1" stop-color="rgb(62.068176%, 42.178345%, 89.72168%)" offset="0.421875"/><stop stop-opacity="1" stop-color="rgb(62.345886%, 42.16156%, 89.627075%)" offset="0.425781"/><stop stop-opacity="1" stop-color="rgb(62.625122%, 42.146301%, 89.532471%)" offset="0.429688"/><stop stop-opacity="1" stop-color="rgb(62.902832%, 42.129517%, 89.437866%)" offset="0.433594"/><stop stop-opacity="1" stop-color="rgb(63.182068%, 42.114258%, 89.343262%)" offset="0.4375"/><stop stop-opacity="1" stop-color="rgb(63.461304%, 42.097473%, 89.248657%)" offset="0.441406"/><stop stop-opacity="1" stop-color="rgb(63.74054%, 42.082214%, 89.154053%)" offset="0.445313"/><stop stop-opacity="1" stop-color="rgb(64.01825%, 42.06543%, 89.059448%)" offset="0.449219"/><stop stop-opacity="1" stop-color="rgb(64.297485%, 42.050171%, 88.964844%)" offset="0.453125"/><stop stop-opacity="1" stop-color="rgb(64.576721%, 42.033386%, 88.870239%)" offset="0.457031"/><stop stop-opacity="1" stop-color="rgb(64.855957%, 42.018127%, 88.777161%)" offset="0.460938"/><stop stop-opacity="1" stop-color="rgb(65.133667%, 42.001343%, 88.682556%)" offset="0.464844"/><stop stop-opacity="1" stop-color="rgb(65.412903%, 41.986084%, 88.587952%)" offset="0.46875"/><stop stop-opacity="1" stop-color="rgb(65.690613%, 41.969299%, 88.493347%)" offset="0.472656"/><stop stop-opacity="1" stop-color="rgb(65.969849%, 41.954041%, 88.398743%)" offset="0.476563"/><stop stop-opacity="1" stop-color="rgb(66.249084%, 41.937256%, 88.304138%)" offset="0.480469"/><stop stop-opacity="1" stop-color="rgb(66.52832%, 41.921997%, 88.209534%)" offset="0.484375"/><stop stop-opacity="1" stop-color="rgb(66.80603%, 41.905212%, 88.114929%)" offset="0.488281"/><stop stop-opacity="1" stop-color="rgb(67.085266%, 41.889954%, 88.020325%)" offset="0.492187"/><stop stop-opacity="1" stop-color="rgb(67.364502%, 41.873169%, 87.92572%)" offset="0.496094"/><stop stop-opacity="1" stop-color="rgb(67.643738%, 41.85791%, 87.831116%)" offset="0.5"/><stop stop-opacity="1" stop-color="rgb(67.921448%, 41.841125%, 87.736511%)" offset="0.503906"/><stop stop-opacity="1" stop-color="rgb(68.200684%, 41.825867%, 87.641907%)" offset="0.507812"/><stop stop-opacity="1" stop-color="rgb(68.478394%, 41.809082%, 87.547302%)" offset="0.511719"/><stop stop-opacity="1" stop-color="rgb(68.757629%, 41.793823%, 87.452698%)" offset="0.515625"/><stop stop-opacity="1" stop-color="rgb(69.036865%, 41.777039%, 87.358093%)" offset="0.519531"/><stop stop-opacity="1" stop-color="rgb(69.316101%, 41.76178%, 87.263489%)" offset="0.523438"/><stop stop-opacity="1" stop-color="rgb(69.593811%, 41.744995%, 87.168884%)" offset="0.527344"/><stop stop-opacity="1" stop-color="rgb(69.873047%, 41.729736%, 87.07428%)" offset="0.53125"/><stop stop-opacity="1" stop-color="rgb(70.152283%, 41.712952%, 86.979675%)" offset="0.535156"/><stop stop-opacity="1" stop-color="rgb(70.431519%, 41.697693%, 86.885071%)" offset="0.539062"/><stop stop-opacity="1" stop-color="rgb(70.709229%, 41.680908%, 86.790466%)" offset="0.542969"/><stop stop-opacity="1" stop-color="rgb(70.988464%, 41.665649%, 86.697388%)" offset="0.546875"/><stop stop-opacity="1" stop-color="rgb(71.266174%, 41.648865%, 86.602783%)" offset="0.550781"/><stop stop-opacity="1" stop-color="rgb(71.54541%, 41.633606%, 86.508179%)" offset="0.554688"/><stop stop-opacity="1" stop-color="rgb(71.824646%, 41.616821%, 86.413574%)" offset="0.558594"/><stop stop-opacity="1" stop-color="rgb(72.103882%, 41.601562%, 86.31897%)" offset="0.5625"/><stop stop-opacity="1" stop-color="rgb(72.381592%, 41.584778%, 86.224365%)" offset="0.566406"/><stop stop-opacity="1" stop-color="rgb(72.660828%, 41.569519%, 86.129761%)" offset="0.570312"/><stop stop-opacity="1" stop-color="rgb(72.940063%, 41.552734%, 86.035156%)" offset="0.574219"/><stop stop-opacity="1" stop-color="rgb(73.219299%, 41.537476%, 85.940552%)" offset="0.578125"/><stop stop-opacity="1" stop-color="rgb(73.497009%, 41.520691%, 85.845947%)" offset="0.582031"/><stop stop-opacity="1" stop-color="rgb(73.776245%, 41.505432%, 85.751343%)" offset="0.585938"/><stop stop-opacity="1" stop-color="rgb(74.053955%, 41.488647%, 85.656738%)" offset="0.589844"/><stop stop-opacity="1" stop-color="rgb(74.333191%, 41.473389%, 85.562134%)" offset="0.59375"/><stop stop-opacity="1" stop-color="rgb(74.612427%, 41.456604%, 85.467529%)" offset="0.597656"/><stop stop-opacity="1" stop-color="rgb(74.891663%, 41.441345%, 85.372925%)" offset="0.601563"/><stop stop-opacity="1" stop-color="rgb(75.169373%, 41.424561%, 85.27832%)" offset="0.605469"/><stop stop-opacity="1" stop-color="rgb(75.448608%, 41.409302%, 85.183716%)" offset="0.609375"/><stop stop-opacity="1" stop-color="rgb(75.727844%, 41.392517%, 85.089111%)" offset="0.613281"/><stop stop-opacity="1" stop-color="rgb(76.00708%, 41.377258%, 84.994507%)" offset="0.617188"/><stop stop-opacity="1" stop-color="rgb(76.28479%, 41.360474%, 84.899902%)" offset="0.621094"/><stop stop-opacity="1" stop-color="rgb(76.564026%, 41.345215%, 84.805298%)" offset="0.625"/><stop stop-opacity="1" stop-color="rgb(76.841736%, 41.32843%, 84.710693%)" offset="0.628906"/><stop stop-opacity="1" stop-color="rgb(77.120972%, 41.313171%, 84.617615%)" offset="0.632812"/><stop stop-opacity="1" stop-color="rgb(77.400208%, 41.296387%, 84.52301%)" offset="0.636719"/><stop stop-opacity="1" stop-color="rgb(77.679443%, 41.281128%, 84.428406%)" offset="0.640625"/><stop stop-opacity="1" stop-color="rgb(77.957153%, 41.264343%, 84.333801%)" offset="0.644531"/><stop stop-opacity="1" stop-color="rgb(78.236389%, 41.249084%, 84.239197%)" offset="0.648438"/><stop stop-opacity="1" stop-color="rgb(78.515625%, 41.2323%, 84.144592%)" offset="0.652344"/><stop stop-opacity="1" stop-color="rgb(78.794861%, 41.217041%, 84.049988%)" offset="0.65625"/><stop stop-opacity="1" stop-color="rgb(79.072571%, 41.200256%, 83.955383%)" offset="0.660156"/><stop stop-opacity="1" stop-color="rgb(79.351807%, 41.184998%, 83.860779%)" offset="0.664063"/><stop stop-opacity="1" stop-color="rgb(79.629517%, 41.168213%, 83.766174%)" offset="0.667969"/><stop stop-opacity="1" stop-color="rgb(79.908752%, 41.152954%, 83.67157%)" offset="0.671875"/><stop stop-opacity="1" stop-color="rgb(80.187988%, 41.136169%, 83.576965%)" offset="0.675781"/><stop stop-opacity="1" stop-color="rgb(80.467224%, 41.120911%, 83.482361%)" offset="0.679688"/><stop stop-opacity="1" stop-color="rgb(80.744934%, 41.104126%, 83.387756%)" offset="0.683594"/><stop stop-opacity="1" stop-color="rgb(81.02417%, 41.088867%, 83.293152%)" offset="0.6875"/><stop stop-opacity="1" stop-color="rgb(81.303406%, 41.072083%, 83.198547%)" offset="0.691406"/><stop stop-opacity="1" stop-color="rgb(81.582642%, 41.056824%, 83.103943%)" offset="0.695313"/><stop stop-opacity="1" stop-color="rgb(81.860352%, 41.040039%, 83.009338%)" offset="0.699219"/><stop stop-opacity="1" stop-color="rgb(82.139587%, 41.02478%, 82.914734%)" offset="0.703125"/><stop stop-opacity="1" stop-color="rgb(82.417297%, 41.007996%, 82.820129%)" offset="0.707031"/><stop stop-opacity="1" stop-color="rgb(82.696533%, 40.992737%, 82.727051%)" offset="0.710938"/><stop stop-opacity="1" stop-color="rgb(82.975769%, 40.975952%, 82.632446%)" offset="0.714844"/><stop stop-opacity="1" stop-color="rgb(83.255005%, 40.960693%, 82.537842%)" offset="0.71875"/><stop stop-opacity="1" stop-color="rgb(83.532715%, 40.943909%, 82.443237%)" offset="0.722656"/><stop stop-opacity="1" stop-color="rgb(83.811951%, 40.92865%, 82.348633%)" offset="0.726562"/><stop stop-opacity="1" stop-color="rgb(84.091187%, 40.911865%, 82.254028%)" offset="0.730469"/><stop stop-opacity="1" stop-color="rgb(84.370422%, 40.896606%, 82.159424%)" offset="0.734375"/><stop stop-opacity="1" stop-color="rgb(84.648132%, 40.879822%, 82.064819%)" offset="0.738281"/><stop stop-opacity="1" stop-color="rgb(84.927368%, 40.864563%, 81.970215%)" offset="0.742188"/><stop stop-opacity="1" stop-color="rgb(85.205078%, 40.847778%, 81.87561%)" offset="0.746094"/><stop stop-opacity="1" stop-color="rgb(85.484314%, 40.83252%, 81.781006%)" offset="0.75"/><stop stop-opacity="1" stop-color="rgb(85.76355%, 40.815735%, 81.686401%)" offset="0.753906"/><stop stop-opacity="1" stop-color="rgb(86.042786%, 40.800476%, 81.591797%)" offset="0.757812"/><stop stop-opacity="1" stop-color="rgb(86.320496%, 40.783691%, 81.497192%)" offset="0.761719"/><stop stop-opacity="1" stop-color="rgb(86.599731%, 40.768433%, 81.402588%)" offset="0.765625"/><stop stop-opacity="1" stop-color="rgb(86.878967%, 40.751648%, 81.307983%)" offset="0.769531"/><stop stop-opacity="1" stop-color="rgb(87.158203%, 40.736389%, 81.213379%)" offset="0.773438"/><stop stop-opacity="1" stop-color="rgb(87.435913%, 40.719604%, 81.118774%)" offset="0.777344"/><stop stop-opacity="1" stop-color="rgb(87.715149%, 40.704346%, 81.02417%)" offset="0.78125"/><stop stop-opacity="1" stop-color="rgb(87.992859%, 40.687561%, 80.929565%)" offset="0.785156"/><stop stop-opacity="1" stop-color="rgb(88.272095%, 40.672302%, 80.834961%)" offset="0.789062"/><stop stop-opacity="1" stop-color="rgb(88.551331%, 40.655518%, 80.740356%)" offset="0.792969"/><stop stop-opacity="1" stop-color="rgb(88.830566%, 40.640259%, 80.647278%)" offset="0.796875"/><stop stop-opacity="1" stop-color="rgb(89.108276%, 40.623474%, 80.552673%)" offset="0.800781"/><stop stop-opacity="1" stop-color="rgb(89.387512%, 40.608215%, 80.458069%)" offset="0.804688"/><stop stop-opacity="1" stop-color="rgb(89.666748%, 40.591431%, 80.363464%)" offset="0.808594"/><stop stop-opacity="1" stop-color="rgb(89.945984%, 40.576172%, 80.26886%)" offset="0.8125"/><stop stop-opacity="1" stop-color="rgb(90.223694%, 40.559387%, 80.174255%)" offset="0.816406"/><stop stop-opacity="1" stop-color="rgb(90.50293%, 40.544128%, 80.079651%)" offset="0.820313"/><stop stop-opacity="1" stop-color="rgb(90.78064%, 40.527344%, 79.985046%)" offset="0.824219"/><stop stop-opacity="1" stop-color="rgb(91.059875%, 40.512085%, 79.890442%)" offset="0.828125"/><stop stop-opacity="1" stop-color="rgb(91.339111%, 40.4953%, 79.795837%)" offset="0.832031"/><stop stop-opacity="1" stop-color="rgb(91.618347%, 40.480042%, 79.701233%)" offset="0.835938"/><stop stop-opacity="1" stop-color="rgb(91.896057%, 40.463257%, 79.606628%)" offset="0.839844"/><stop stop-opacity="1" stop-color="rgb(92.175293%, 40.447998%, 79.512024%)" offset="0.84375"/><stop stop-opacity="1" stop-color="rgb(92.454529%, 40.431213%, 79.417419%)" offset="0.847656"/><stop stop-opacity="1" stop-color="rgb(92.733765%, 40.415955%, 79.322815%)" offset="0.851562"/><stop stop-opacity="1" stop-color="rgb(93.011475%, 40.39917%, 79.22821%)" offset="0.855469"/><stop stop-opacity="1" stop-color="rgb(93.29071%, 40.383911%, 79.133606%)" offset="0.859375"/><stop stop-opacity="1" stop-color="rgb(93.56842%, 40.367126%, 79.039001%)" offset="0.863281"/><stop stop-opacity="1" stop-color="rgb(93.847656%, 40.351868%, 78.944397%)" offset="0.867188"/><stop stop-opacity="1" stop-color="rgb(94.126892%, 40.335083%, 78.849792%)" offset="0.871094"/><stop stop-opacity="1" stop-color="rgb(94.406128%, 40.319824%, 78.755188%)" offset="0.875"/><stop stop-opacity="1" stop-color="rgb(94.683838%, 40.30304%, 78.660583%)" offset="0.878906"/><stop stop-opacity="1" stop-color="rgb(94.963074%, 40.287781%, 78.567505%)" offset="0.882812"/><stop stop-opacity="1" stop-color="rgb(95.24231%, 40.270996%, 78.4729%)" offset="0.886719"/><stop stop-opacity="1" stop-color="rgb(95.521545%, 40.255737%, 78.378296%)" offset="0.890625"/><stop stop-opacity="1" stop-color="rgb(95.799255%, 40.238953%, 78.283691%)" offset="0.894531"/><stop stop-opacity="1" stop-color="rgb(96.078491%, 40.223694%, 78.189087%)" offset="0.898438"/><stop stop-opacity="1" stop-color="rgb(96.356201%, 40.208435%, 78.094482%)" offset="0.902344"/><stop stop-opacity="1" stop-color="rgb(96.635437%, 40.193176%, 77.999878%)" offset="0.90625"/><stop stop-opacity="1" stop-color="rgb(96.914673%, 40.176392%, 77.905273%)" offset="0.910156"/><stop stop-opacity="1" stop-color="rgb(97.193909%, 40.161133%, 77.810669%)" offset="0.914062"/><stop stop-opacity="1" stop-color="rgb(97.471619%, 40.144348%, 77.716064%)" offset="0.917969"/><stop stop-opacity="1" stop-color="rgb(97.750854%, 40.129089%, 77.62146%)" offset="0.921875"/><stop stop-opacity="1" stop-color="rgb(98.03009%, 40.112305%, 77.526855%)" offset="0.925781"/><stop stop-opacity="1" stop-color="rgb(98.309326%, 40.097046%, 77.432251%)" offset="0.929688"/><stop stop-opacity="1" stop-color="rgb(98.587036%, 40.080261%, 77.337646%)" offset="0.933594"/><stop stop-opacity="1" stop-color="rgb(98.866272%, 40.065002%, 77.243042%)" offset="0.9375"/><stop stop-opacity="1" stop-color="rgb(99.143982%, 40.048218%, 77.148438%)" offset="0.941406"/><stop stop-opacity="1" stop-color="rgb(99.423218%, 40.032959%, 77.053833%)" offset="0.945312"/><stop stop-opacity="1" stop-color="rgb(99.702454%, 40.016174%, 76.959229%)" offset="0.949219"/><stop stop-opacity="1" stop-color="rgb(99.981689%, 40.000916%, 76.864624%)" offset="0.953125"/><stop stop-opacity="1" stop-color="rgb(99.990845%, 39.99939%, 76.861572%)" offset="0.96875"/><stop stop-opacity="1" stop-color="rgb(100%, 39.99939%, 76.858521%)" offset="1"/></linearGradient><clipPath id="f50a6caabd"><rect x="0" width="1440" y="0" height="562"/></clipPath><clipPath id="71280782c3"><path d="M 0.640625 0 L 1439.359375 0 L 1439.359375 562 L 0.640625 562 Z M 0.640625 0 " clip-rule="nonzero"/></clipPath><clipPath id="721ceaf095"><rect x="0" width="1440" y="0" height="562"/></clipPath><clipPath id="7d4feb3078"><rect x="0" width="1440" y="0" height="562"/></clipPath><mask id="7b3f645f69"><g filter="url(#44cdecea9e)"><g transform="matrix(1, 0, 0, 1, 0.000000000000000111, 0)"><g clip-path="url(#7d4feb3078)"><g clip-path="url(#71280782c3)"><g transform="matrix(1, 0, 0, 1, 0.000000000000000111, 0)"><g clip-path="url(#721ceaf095)"><g fill="#000000" fill-opacity="1"><g transform="translate(65.231213, 382.747269)"><g><path d="M 104.671875 -320.4375 C 116.921875 -320.4375 128.671875 -319.9375 139.921875 -318.9375 C 151.171875 -317.945312 162.921875 -316.804688 175.171875 -315.515625 C 187.421875 -314.234375 201.378906 -313.09375 217.046875 -312.09375 C 232.710938 -311.101562 251.082031 -310.609375 272.15625 -310.609375 C 284.6875 -310.609375 294.507812 -311.75 301.625 -314.03125 C 308.75 -316.3125 312.3125 -317.453125 312.3125 -317.453125 C 313.457031 -316.304688 314.523438 -314.519531 315.515625 -312.09375 C 316.515625 -309.675781 317.015625 -306.757812 317.015625 -303.34375 C 317.015625 -292.238281 313.023438 -282.769531 305.046875 -274.9375 C 297.078125 -267.101562 283.835938 -263.1875 265.328125 -263.1875 C 255.359375 -263.1875 246.597656 -263.894531 239.046875 -265.3125 C 231.492188 -266.738281 224.226562 -268.519531 217.25 -270.65625 C 210.269531 -272.800781 202.65625 -275.15625 194.40625 -277.71875 L 153.8125 -44.859375 C 151.25 -30.046875 150.535156 -19.578125 151.671875 -13.453125 C 152.804688 -7.328125 153.375 -4.265625 153.375 -4.265625 C 153.375 -4.265625 151.523438 -3.550781 147.828125 -2.125 C 144.128906 -0.707031 137.863281 0 129.03125 0 C 113.363281 0 103.394531 -3.628906 99.125 -10.890625 C 94.851562 -18.160156 94.140625 -30.050781 96.984375 -46.5625 L 137.140625 -276 C 137.992188 -281.125 138.5625 -285.179688 138.84375 -288.171875 C 139.132812 -291.171875 139.28125 -292.671875 139.28125 -292.671875 C 132.726562 -294.085938 127.242188 -295.148438 122.828125 -295.859375 C 118.421875 -296.578125 112.085938 -296.9375 103.828125 -296.9375 C 84.453125 -296.9375 69.632812 -292.304688 59.375 -283.046875 C 49.125 -273.796875 44 -263.046875 44 -250.796875 C 44 -244.816406 45.492188 -240.046875 48.484375 -236.484375 C 51.484375 -232.921875 55.6875 -231.140625 61.09375 -231.140625 C 63.375 -231.140625 65.15625 -231.351562 66.4375 -231.78125 C 67.71875 -232.207031 68.359375 -232.421875 68.359375 -232.421875 C 68.359375 -232.421875 68.425781 -232.132812 68.5625 -231.5625 C 68.707031 -231 68.78125 -230.003906 68.78125 -228.578125 C 68.78125 -223.453125 66.070312 -218.179688 60.65625 -212.765625 C 55.25 -207.359375 47.132812 -204.65625 36.3125 -204.65625 C 22.351562 -204.65625 11.382812 -208.570312 3.40625 -216.40625 C -4.5625 -224.238281 -8.546875 -234.5625 -8.546875 -247.375 C -8.546875 -268.457031 0.851562 -285.90625 19.65625 -299.71875 C 38.457031 -313.53125 66.796875 -320.4375 104.671875 -320.4375 Z M 104.671875 -320.4375 "/></g></g></g><g fill="#000000" fill-opacity="1"><g transform="translate(339.518235, 382.747269)"><g><path d="M 66.21875 -171.328125 L 62.8125 -152.53125 C 76.476562 -175.601562 90.003906 -191.550781 103.390625 -200.375 C 116.773438 -209.207031 128.3125 -213.625 138 -213.625 C 148.539062 -213.625 156.875 -210.773438 163 -205.078125 C 169.125 -199.378906 172.1875 -191.117188 172.1875 -180.296875 C 172.1875 -168.335938 168.910156 -158.507812 162.359375 -150.8125 C 155.804688 -143.125 147.257812 -139.28125 136.71875 -139.28125 C 131.3125 -139.28125 126.753906 -139.707031 123.046875 -140.5625 C 119.347656 -141.414062 117.5 -141.84375 117.5 -141.84375 C 117.5 -141.84375 118.421875 -143.976562 120.265625 -148.25 C 122.117188 -152.53125 123.046875 -157.515625 123.046875 -163.203125 C 123.046875 -169.472656 120.054688 -172.609375 114.078125 -172.609375 C 110.660156 -172.609375 106.53125 -170.898438 101.6875 -167.484375 C 96.84375 -164.066406 90.859375 -157.375 83.734375 -147.40625 C 78.328125 -140 73.203125 -131.664062 68.359375 -122.40625 C 63.515625 -113.144531 58.957031 -101.820312 54.6875 -88.4375 C 50.414062 -75.050781 46.570312 -58.25 43.15625 -38.03125 C 41.15625 -25.488281 40.65625 -16.65625 41.65625 -11.53125 C 42.65625 -6.40625 43.15625 -3.84375 43.15625 -3.84375 C 43.15625 -3.84375 41.441406 -3.203125 38.015625 -1.921875 C 34.597656 -0.640625 28.90625 0 20.9375 0 C 4.414062 0 -5.625 -3.34375 -9.1875 -10.03125 C -12.75 -16.726562 -13.25 -27.484375 -10.6875 -42.296875 L 11.96875 -173.03125 C 14.238281 -186.414062 14.875 -195.882812 13.875 -201.4375 C 12.882812 -207 12.390625 -209.78125 12.390625 -209.78125 C 12.390625 -209.78125 14.097656 -210.421875 17.515625 -211.703125 C 20.929688 -212.984375 26.628906 -213.625 34.609375 -213.625 C 51.128906 -213.625 61.164062 -210.132812 64.71875 -203.15625 C 68.28125 -196.175781 68.78125 -185.566406 66.21875 -171.328125 Z M 66.21875 -171.328125 "/></g></g></g><g fill="#000000" fill-opacity="1"><g transform="translate(528.784828, 382.747269)"><g><path d="M 188.84375 -178.59375 L 170.46875 -74.765625 C 168.195312 -61.953125 168.769531 -52.484375 172.1875 -46.359375 C 175.601562 -40.234375 181.15625 -37.171875 188.84375 -37.171875 C 196.25 -37.171875 204.222656 -40.515625 212.765625 -47.203125 C 221.316406 -53.898438 228.296875 -62.945312 233.703125 -74.34375 C 236.554688 -74.34375 238.765625 -73.488281 240.328125 -71.78125 C 241.890625 -70.070312 242.390625 -67.222656 241.828125 -63.234375 C 240.679688 -57.535156 238.039062 -51.125 233.90625 -44 C 229.78125 -36.882812 224.300781 -29.976562 217.46875 -23.28125 C 210.632812 -16.59375 202.800781 -11.039062 193.96875 -6.625 C 185.144531 -2.207031 175.601562 0 165.34375 0 C 151.382812 0 139.847656 -4.195312 130.734375 -12.59375 C 121.617188 -21 116.492188 -32.894531 115.359375 -48.28125 C 106.523438 -32.613281 96.484375 -20.648438 85.234375 -12.390625 C 73.984375 -4.128906 62.234375 0 49.984375 0 C 32.609375 0 17.796875 -5.976562 5.546875 -17.9375 C -6.691406 -29.90625 -12.8125 -48.421875 -12.8125 -73.484375 C -12.8125 -97.410156 -9.675781 -118.128906 -3.40625 -135.640625 C 2.851562 -153.160156 11.109375 -167.6875 21.359375 -179.21875 C 31.617188 -190.757812 42.941406 -199.378906 55.328125 -205.078125 C 67.722656 -210.773438 80.1875 -213.625 92.71875 -213.625 C 103.539062 -213.625 112.722656 -211.703125 120.265625 -207.859375 C 127.816406 -204.015625 134.015625 -198.957031 138.859375 -192.6875 C 142.273438 -200.375 146.898438 -205.785156 152.734375 -208.921875 C 158.578125 -212.054688 166.769531 -213.625 177.3125 -213.625 C 184.71875 -213.625 190.128906 -212.910156 193.546875 -211.484375 C 196.960938 -210.066406 198.671875 -209.359375 198.671875 -209.359375 C 198.671875 -209.359375 197.601562 -207.148438 195.46875 -202.734375 C 193.332031 -198.316406 191.125 -190.269531 188.84375 -178.59375 Z M 67.078125 -37.171875 C 74.765625 -37.171875 81.882812 -40.660156 88.4375 -47.640625 C 94.988281 -54.617188 100.828125 -63.585938 105.953125 -74.546875 C 111.085938 -85.515625 115.578125 -97.191406 119.421875 -109.578125 C 123.265625 -121.972656 126.179688 -133.441406 128.171875 -143.984375 L 132.015625 -164.0625 C 130.023438 -168.332031 126.894531 -172.816406 122.625 -177.515625 C 118.351562 -182.222656 112.085938 -184.578125 103.828125 -184.578125 C 94.140625 -184.578125 84.523438 -180.019531 74.984375 -170.90625 C 65.441406 -161.789062 57.535156 -148.898438 51.265625 -132.234375 C 45.003906 -115.566406 41.875 -95.695312 41.875 -72.625 C 41.875 -60.664062 44.078125 -51.765625 48.484375 -45.921875 C 52.898438 -40.085938 59.097656 -37.171875 67.078125 -37.171875 Z M 67.078125 -37.171875 "/></g></g></g><g fill="#000000" fill-opacity="1"><g transform="translate(766.756593, 382.747269)"><g><path d="M -4.703125 -94 L 8.96875 -173.03125 C 11.25 -186.707031 11.890625 -196.25 10.890625 -201.65625 C 9.898438 -207.070312 9.40625 -209.78125 9.40625 -209.78125 C 9.40625 -209.78125 11.113281 -210.421875 14.53125 -211.703125 C 17.945312 -212.984375 23.640625 -213.625 31.609375 -213.625 C 48.128906 -213.625 58.171875 -210.347656 61.734375 -203.796875 C 65.296875 -197.242188 65.796875 -186.421875 63.234375 -171.328125 L 46.5625 -74.765625 C 44.570312 -61.953125 45.210938 -52.484375 48.484375 -46.359375 C 51.765625 -40.234375 57.25 -37.171875 64.9375 -37.171875 C 72.34375 -37.171875 80.316406 -40.515625 88.859375 -47.203125 C 97.410156 -53.898438 104.390625 -62.945312 109.796875 -74.34375 C 112.648438 -74.34375 114.859375 -73.488281 116.421875 -71.78125 C 117.992188 -70.070312 118.492188 -67.222656 117.921875 -63.234375 C 116.785156 -57.535156 114.148438 -51.125 110.015625 -44 C 105.890625 -36.882812 100.40625 -29.976562 93.5625 -23.28125 C 86.726562 -16.59375 78.894531 -11.039062 70.0625 -6.625 C 61.238281 -2.207031 51.695312 0 41.4375 0 C 26.625 0 14.585938 -4.625 5.328125 -13.875 C -3.921875 -23.132812 -8.546875 -36.3125 -8.546875 -53.40625 C -8.546875 -57.675781 -8.257812 -63.367188 -7.6875 -70.484375 C -7.125 -77.609375 -6.128906 -85.445312 -4.703125 -94 Z M 23.921875 -277.71875 C 23.921875 -286.539062 26.910156 -293.867188 32.890625 -299.703125 C 38.878906 -305.546875 45.859375 -308.46875 53.828125 -308.46875 C 62.085938 -308.46875 68.566406 -305.90625 73.265625 -300.78125 C 77.972656 -295.65625 80.328125 -289.25 80.328125 -281.5625 C 80.328125 -274.15625 77.546875 -267.390625 71.984375 -261.265625 C 66.429688 -255.140625 58.957031 -252.078125 49.5625 -252.078125 C 41.875 -252.078125 35.675781 -254.5 30.96875 -259.34375 C 26.269531 -264.1875 23.921875 -270.3125 23.921875 -277.71875 Z M 23.921875 -277.71875 "/></g></g></g><g fill="#000000" fill-opacity="1"><g transform="translate(880.829214, 382.747269)"><g><path d="M -2.5625 -213.625 L 17.515625 -213.625 L 21.796875 -236.703125 C 24.359375 -250.085938 25.066406 -259.554688 23.921875 -265.109375 C 22.785156 -270.660156 22.21875 -273.4375 22.21875 -273.4375 C 22.21875 -273.4375 23.925781 -274.078125 27.34375 -275.359375 C 30.757812 -276.640625 36.457031 -277.28125 44.4375 -277.28125 C 60.957031 -277.28125 71.066406 -274.003906 74.765625 -267.453125 C 78.472656 -260.898438 78.898438 -250.078125 76.046875 -234.984375 L 72.203125 -213.625 L 114.5 -213.625 C 114.5 -213.625 115 -212.835938 116 -211.265625 C 117 -209.703125 117.5 -207.5 117.5 -204.65625 C 117.5 -200.945312 116.285156 -197.953125 113.859375 -195.671875 C 111.441406 -193.398438 107.8125 -192.265625 102.96875 -192.265625 L 68.359375 -192.265625 L 47.859375 -74.765625 C 45.859375 -63.085938 46.921875 -53.898438 51.046875 -47.203125 C 55.179688 -40.515625 62.234375 -37.171875 72.203125 -37.171875 C 84.453125 -37.171875 94.921875 -41.15625 103.609375 -49.125 C 112.296875 -57.101562 118.914062 -65.507812 123.46875 -74.34375 C 126.320312 -74.34375 128.53125 -73.414062 130.09375 -71.5625 C 131.664062 -69.707031 132.023438 -66.929688 131.171875 -63.234375 C 129.171875 -54.691406 124.253906 -45.503906 116.421875 -35.671875 C 108.585938 -25.847656 98.898438 -17.445312 87.359375 -10.46875 C 75.828125 -3.488281 63.226562 0 49.5625 0 C 33.894531 0 20.578125 -5.125 9.609375 -15.375 C -1.359375 -25.632812 -6.84375 -39.304688 -6.84375 -56.390625 C -6.84375 -61.234375 -6.554688 -67.359375 -5.984375 -74.765625 C -5.410156 -82.171875 -4.128906 -91.285156 -2.140625 -102.109375 L 13.671875 -192.265625 L -14.09375 -192.265625 C -14.09375 -192.265625 -14.59375 -193.046875 -15.59375 -194.609375 C -16.59375 -196.179688 -17.09375 -198.390625 -17.09375 -201.234375 C -17.09375 -204.929688 -15.8125 -207.921875 -13.25 -210.203125 C -10.6875 -212.484375 -7.125 -213.625 -2.5625 -213.625 Z M -2.5625 -213.625 "/></g></g></g><g fill="#000000" fill-opacity="1"><g transform="translate(1008.146235, 382.747269)"><g><path d="M -2.5625 -213.625 L 17.515625 -213.625 L 21.796875 -236.703125 C 24.359375 -250.085938 25.066406 -259.554688 23.921875 -265.109375 C 22.785156 -270.660156 22.21875 -273.4375 22.21875 -273.4375 C 22.21875 -273.4375 23.925781 -274.078125 27.34375 -275.359375 C 30.757812 -276.640625 36.457031 -277.28125 44.4375 -277.28125 C 60.957031 -277.28125 71.066406 -274.003906 74.765625 -267.453125 C 78.472656 -260.898438 78.898438 -250.078125 76.046875 -234.984375 L 72.203125 -213.625 L 114.5 -213.625 C 114.5 -213.625 115 -212.835938 116 -211.265625 C 117 -209.703125 117.5 -207.5 117.5 -204.65625 C 117.5 -200.945312 116.285156 -197.953125 113.859375 -195.671875 C 111.441406 -193.398438 107.8125 -192.265625 102.96875 -192.265625 L 68.359375 -192.265625 L 47.859375 -74.765625 C 45.859375 -63.085938 46.921875 -53.898438 51.046875 -47.203125 C 55.179688 -40.515625 62.234375 -37.171875 72.203125 -37.171875 C 84.453125 -37.171875 94.921875 -41.15625 103.609375 -49.125 C 112.296875 -57.101562 118.914062 -65.507812 123.46875 -74.34375 C 126.320312 -74.34375 128.53125 -73.414062 130.09375 -71.5625 C 131.664062 -69.707031 132.023438 -66.929688 131.171875 -63.234375 C 129.171875 -54.691406 124.253906 -45.503906 116.421875 -35.671875 C 108.585938 -25.847656 98.898438 -17.445312 87.359375 -10.46875 C 75.828125 -3.488281 63.226562 0 49.5625 0 C 33.894531 0 20.578125 -5.125 9.609375 -15.375 C -1.359375 -25.632812 -6.84375 -39.304688 -6.84375 -56.390625 C -6.84375 -61.234375 -6.554688 -67.359375 -5.984375 -74.765625 C -5.410156 -82.171875 -4.128906 -91.285156 -2.140625 -102.109375 L 13.671875 -192.265625 L -14.09375 -192.265625 C -14.09375 -192.265625 -14.59375 -193.046875 -15.59375 -194.609375 C -16.59375 -196.179688 -17.09375 -198.390625 -17.09375 -201.234375 C -17.09375 -204.929688 -15.8125 -207.921875 -13.25 -210.203125 C -10.6875 -212.484375 -7.125 -213.625 -2.5625 -213.625 Z M -2.5625 -213.625 "/></g></g></g><g fill="#000000" fill-opacity="1"><g transform="translate(1135.463256, 382.747269)"><g><path d="M 188.421875 -171.328125 L 165.34375 -35.890625 C 165.34375 -35.890625 167.691406 -36.882812 172.390625 -38.875 C 177.085938 -40.875 183.140625 -43.648438 190.546875 -47.203125 C 197.953125 -50.765625 205.644531 -54.894531 213.625 -59.59375 C 221.601562 -64.300781 228.722656 -69.21875 234.984375 -74.34375 C 237.835938 -74.34375 240.046875 -73.488281 241.609375 -71.78125 C 243.171875 -70.070312 243.671875 -67.648438 243.109375 -64.515625 C 242.253906 -60.804688 237.550781 -55.679688 229 -49.140625 C 221.03125 -43.148438 210.847656 -36.664062 198.453125 -29.6875 C 186.066406 -22.707031 173.609375 -16.085938 161.078125 -9.828125 L 160.21875 -4.703125 C 151.957031 44.859375 137.859375 82.953125 117.921875 109.578125 C 97.984375 136.210938 72.207031 149.53125 40.59375 149.53125 C 26.0625 149.53125 14.453125 145.328125 5.765625 136.921875 C -2.921875 128.523438 -7.265625 117.773438 -7.265625 104.671875 C -7.265625 92.140625 -3.921875 80.175781 2.765625 68.78125 C 9.460938 57.394531 18.082031 47.285156 28.625 38.453125 C 39.445312 29.335938 50.835938 21.144531 62.796875 13.875 C 74.765625 6.613281 89.4375 -1.285156 106.8125 -9.828125 L 115.78125 -64.9375 C 112.9375 -59.53125 110.085938 -54.472656 107.234375 -49.765625 C 104.390625 -45.066406 101.398438 -40.582031 98.265625 -36.3125 C 89.429688 -24.0625 80.101562 -14.945312 70.28125 -8.96875 C 60.457031 -2.988281 49.707031 0 38.03125 0 C 23.78125 0 12.453125 -4.554688 4.046875 -13.671875 C -4.347656 -22.785156 -8.546875 -34.75 -8.546875 -49.5625 C -8.546875 -57.539062 -8.1875 -65.515625 -7.46875 -73.484375 C -6.757812 -81.460938 -5.410156 -91.003906 -3.421875 -102.109375 L 8.96875 -173.03125 C 11.25 -186.414062 11.890625 -195.882812 10.890625 -201.4375 C 9.898438 -207 9.40625 -209.78125 9.40625 -209.78125 C 9.40625 -209.78125 11.113281 -210.421875 14.53125 -211.703125 C 17.945312 -212.984375 23.640625 -213.625 31.609375 -213.625 C 48.128906 -213.625 58.171875 -210.347656 61.734375 -203.796875 C 65.296875 -197.242188 65.796875 -186.421875 63.234375 -171.328125 L 46.140625 -72.625 C 44.148438 -60.382812 44.4375 -51.414062 47 -45.71875 C 49.5625 -40.019531 53.976562 -37.171875 60.25 -37.171875 C 65.082031 -37.171875 70.203125 -39.804688 75.609375 -45.078125 C 81.023438 -50.347656 86.441406 -57.253906 91.859375 -65.796875 C 100.117188 -78.609375 108.164062 -94.34375 116 -113 C 123.832031 -131.664062 129.882812 -151.675781 134.15625 -173.03125 C 136.71875 -186.414062 137.425781 -195.882812 136.28125 -201.4375 C 135.144531 -207 134.578125 -209.78125 134.578125 -209.78125 C 134.578125 -209.78125 136.285156 -210.421875 139.703125 -211.703125 C 143.128906 -212.984375 148.828125 -213.625 156.796875 -213.625 C 173.316406 -213.625 183.359375 -210.347656 186.921875 -203.796875 C 190.484375 -197.242188 190.984375 -186.421875 188.421875 -171.328125 Z M 36.3125 121.34375 C 51.40625 121.34375 64.578125 112.507812 75.828125 94.84375 C 87.085938 77.1875 95.847656 51.269531 102.109375 17.09375 C 74.203125 31.613281 54.125 44.710938 41.875 56.390625 C 25.0625 72.628906 16.65625 87.867188 16.65625 102.109375 C 16.65625 107.523438 18.289062 112.082031 21.5625 115.78125 C 24.84375 119.488281 29.757812 121.34375 36.3125 121.34375 Z M 36.3125 121.34375 "/></g></g></g></g></g></g></g></g></g></mask><clipPath id="79dab4ea0f"><path d="M 0.640625 0 L 1439.359375 0 L 1439.359375 562 L 0.640625 562 Z M 0.640625 0 " clip-rule="nonzero"/></clipPath><clipPath id="02d513cc78"><rect x="0" width="1440" y="0" height="562"/></clipPath><clipPath id="1fee3cb723"><rect x="0" width="1440" y="0" height="562"/></clipPath><clipPath id="5baa08d8a1"><rect x="0" width="1440" y="0" height="562"/></clipPath></defs><g clip-path="url(#bba5257c0c)"><g transform="matrix(1, 0, 0, 1, 0.000000000000000111, 0)"><g clip-path="url(#5baa08d8a1)"><g clip-path="url(#9812db9cc4)"><g transform="matrix(1, 0, 0, 1, 0.000000000000000111, 0)"><g clip-path="url(#1fee3cb723)"><g clip-path="url(#bea4009ea9)"><g mask="url(#7b3f645f69)"><g transform="matrix(1, 0, 0, 1, 0.000000000000000111, 0)"><g clip-path="url(#02d513cc78)"><g clip-path="url(#79dab4ea0f)"><path fill="url(#46c680e24b)" d="M 0.640625 0 L 0.640625 562 L 1439.359375 562 L 1439.359375 0 Z M 0.640625 0 " fill-rule="nonzero"/></g></g></g></g></g></g></g></g></g></g></g></svg></div>
+      <span class="by">by WePredict</span>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">經濟部產業發展署 AI 工具庫｜已上架 4 項方案</span>
+    <h1>把「人的問題」，<br>變成<span class="g">可執行的人才決策</span></h1>
+    <p class="lede">從人才特質、職務適配，到團隊協作與離職風險，Traitty 讓主管從數據出發，直接拿到下一步該怎麼做的建議——而不是又一份看得懂、卻不知道怎麼用的報告。</p>
+    <div class="savings">
+      <span class="save">省錯用</span>
+      <span class="save">省時間</span>
+      <span class="save">省內耗</span>
+    </div>
+  </header>
+
+  <section>
+    <span class="sec-label">What we do</span>
+    <h2>我們在做什麼</h2>
+    <p class="sub">結合心理學、行為科學、企業人才資料與生成式 AI，把「看得懂但不知道下一步怎麼做」的人才資訊，轉成主管可以直接使用的決策建議。</p>
+
+    <div class="flow">
+      <div class="step">
+        <span class="step-n">STEP 1</span>
+        <span class="step-t">人才資料與特質</span>
+        <span class="step-d">評鑑、履歷、職務需求與團隊情境</span>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="step step-mid">
+        <span class="step-n">STEP 2</span>
+        <span class="step-t">Traitty AI 解析</span>
+        <span class="step-d">找出個人差異、職務適配與互動風險</span>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="step">
+        <span class="step-n">STEP 3</span>
+        <span class="step-t">可執行行動建議</span>
+        <span class="step-d">主管直接提問，即時取得下一步做法</span>
+      </div>
+    </div>
+
+    <div class="chips">
+      <span class="chip">招募任用</span>
+      <span class="chip">面談帶教</span>
+      <span class="chip">團隊協作</span>
+      <span class="chip">人才培育</span>
+      <span class="chip">留才預警</span>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-label">What we solve</span>
+    <h2>我們解決什麼</h2>
+    <p class="sub">企業不缺人才資料，缺的是把資料變成行動的那一步。</p>
+
+    <div class="problems">
+      <div class="prob">
+        <span class="prob-tag">招募任用</span>
+        <span class="prob-t">面試看感覺，用人靠印象</span>
+        <span class="prob-d">以特質、職務與情境資料，建立更一致的面談依據與人才適配判斷，降低錯誤錄用成本。</span>
+      </div>
+      <div class="prob">
+        <span class="prob-tag">面談帶教</span>
+        <span class="prob-t">主管不知道怎麼帶不同的人</span>
+        <span class="prob-d">依個人差異提供溝通方式、回饋節奏、授權尺度與新人帶教建議，新手主管也能上手。</span>
+      </div>
+      <div class="prob">
+        <span class="prob-tag">團隊協作</span>
+        <span class="prob-t">分工很清楚，團隊仍反覆內耗</span>
+        <span class="prob-d">找出速度、標準、資訊流與責任邊界上的摩擦點，給出具體的協作與會議推進方式。</span>
+      </div>
+      <div class="prob">
+        <span class="prob-tag">培育留才</span>
+        <span class="prob-t">培育與留才總在事後處理</span>
+        <span class="prob-d">提早看見發展方向與可能觸發離職的情境，讓主管在還來得及的時候介入。</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-label">Solutions on KEID</span>
+    <h2>已上架的四種企業導入方案</h2>
+    <p class="sub">從入門應用到企業級客製化，四種方案皆已上架經濟部產業發展署 AI 工具庫，可搭配政府補助方案導入。</p>
+
+    <div class="sols">
+      <div class="sol">
+        <span class="sol-n">01</span>
+        <div class="sol-body">
+          <span class="sol-tier">入門｜個人與人才盤點</span>
+          <div class="sol-t">Traitty AI 管理決策智能 — 人才洞察</div>
+          <div class="sol-d">快速理解個人特質，轉成當下就能用的管理行動。</div>
+        </div>
+        <a class="sol-go" href="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=8b94fa1a-8e31-a1d8-8e1e-d65d514fc284" target="_blank" rel="noopener">產發署頁面 ↗</a>
+      </div>
+
+      <div class="sol">
+        <span class="sol-n">02</span>
+        <div class="sol-body">
+          <span class="sol-tier">進階｜團隊與專案協作</span>
+          <div class="sol-t">Traitty AI 管理決策智能 — 團隊協作</div>
+          <div class="sol-d">辨識團隊摩擦來源，提升協作與專案推進品質。</div>
+        </div>
+        <a class="sol-go" href="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=5973d827-411e-aa38-2d95-d5d85e265b7c" target="_blank" rel="noopener">產發署頁面 ↗</a>
+      </div>
+
+      <div class="sol">
+        <span class="sol-n">03</span>
+        <div class="sol-body">
+          <span class="sol-tier">客製｜職務與發展模型</span>
+          <div class="sol-t">WePredict 人才適配與發展系統</div>
+          <div class="sol-d">依企業職務建模，建立專屬的人才適配與發展依據。</div>
+        </div>
+        <a class="sol-go" href="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=48a04e0a-4c74-9876-0f53-0c766a37dd89" target="_blank" rel="noopener">產發署頁面 ↗</a>
+      </div>
+
+      <div class="sol">
+        <span class="sol-n">04</span>
+        <div class="sol-body">
+          <span class="sol-tier">企業級｜預測與風險識別</span>
+          <div class="sol-t">WePredict 績效／離職風險識別預測系統</div>
+          <div class="sol-d">以企業自有數據建模，支援績效與留才的關鍵決策。</div>
+        </div>
+        <a class="sol-go" href="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=750e12eb-06e7-b543-45b8-021de1bbeb43" target="_blank" rel="noopener">產發署頁面 ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-label">Why it works</span>
+    <h2>技術基礎</h2>
+    <p class="sub">Traitty 建立在 Perception AI 識才技術之上，由 WePredict 轉化為適合亞洲與中文企業快速導入的服務。</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-n">10 年</div>
+        <div class="stat-t">AI 建模技術</div>
+        <div class="stat-d">深度企業與人才數據分析</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">560 種</div>
+        <div class="stat-t">人類特質</div>
+        <div class="stat-d">心理學與行為科學基礎</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">500 萬</div>
+        <div class="stat-t">測試資料</div>
+        <div class="stat-d">逐步解析職務與特質關係</div>
+      </div>
+    </div>
+
+    <div class="logos">
+      <span class="logos-l">Perception AI 國際採用企業</span>
+      <span class="logos-n">Mercedes-Benz</span>
+      <span class="logos-n">CrowdStrike</span>
+      <span class="logos-n">UiPath</span>
+      <span class="logos-n">Michael Page</span>
+    </div>
+
+    <div class="pitch">
+      <span class="pitch-l">一段話介紹</span>
+      <p>Traitty AI 是給主管用的人才決策 Copilot：把評鑑、履歷與職務資料，轉成面談提問、帶人方式、團隊分工與留才預警的具體建議。四項方案已上架經濟部產業發展署 AI 工具庫，企業可搭配政府補助方案導入，從單一團隊試行到全公司客製建模都有對應規格。</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-label">Links</span>
+    <h2>了解更多</h2>
+    <p class="sub">官網介紹頁說明產品內容，產發署頁面為補助方案的正式資訊來源。</p>
+
+    <div class="link-group">
+      <div class="lg-head">
+        <span class="lg-title">官網介紹</span>
+        <span class="lg-count">2 頁</span>
+      </div>
+
+      <div class="link-row">
+        <div>
+          <div class="link-name"><span class="n">A</span>Traitty AI 人才決策實測｜限量體驗</div>
+          <div class="link-url">https://www.wepredict.io/traittyaidemo</div>
+        </div>
+        <div class="link-acts">
+          <a class="act" href="https://www.wepredict.io/traittyaidemo" target="_blank" rel="noopener">開啟 ↗</a>
+          <button class="act" type="button" data-copy="https://www.wepredict.io/traittyaidemo">複製</button>
+        </div>
+      </div>
+
+      <div class="link-row">
+        <div>
+          <div class="link-name"><span class="n">B</span>Traitty AI 人才決策 Copilot</div>
+          <div class="link-url">https://www.wepredict.io/traitty-ai</div>
+        </div>
+        <div class="link-acts">
+          <a class="act" href="https://www.wepredict.io/traitty-ai" target="_blank" rel="noopener">開啟 ↗</a>
+          <button class="act" type="button" data-copy="https://www.wepredict.io/traitty-ai">複製</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="link-group">
+      <div class="lg-head">
+        <span class="lg-title">經濟部產業發展署 AI 工具庫</span>
+        <span class="lg-count">4 項方案</span>
+      </div>
+
+      <div class="link-row">
+        <div>
+          <div class="link-name"><span class="n">01</span>Traitty AI 管理決策智能 — 人才洞察</div>
+          <div class="link-url">https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=8b94fa1a-8e31-a1d8-8e1e-d65d514fc284</div>
+        </div>
+        <div class="link-acts">
+          <a class="act" href="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=8b94fa1a-8e31-a1d8-8e1e-d65d514fc284" target="_blank" rel="noopener">開啟 ↗</a>
+          <button class="act" type="button" data-copy="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=8b94fa1a-8e31-a1d8-8e1e-d65d514fc284">複製</button>
+        </div>
+      </div>
+
+      <div class="link-row">
+        <div>
+          <div class="link-name"><span class="n">02</span>Traitty AI 管理決策智能 — 團隊協作</div>
+          <div class="link-url">https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=5973d827-411e-aa38-2d95-d5d85e265b7c</div>
+        </div>
+        <div class="link-acts">
+          <a class="act" href="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=5973d827-411e-aa38-2d95-d5d85e265b7c" target="_blank" rel="noopener">開啟 ↗</a>
+          <button class="act" type="button" data-copy="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=5973d827-411e-aa38-2d95-d5d85e265b7c">複製</button>
+        </div>
+      </div>
+
+      <div class="link-row">
+        <div>
+          <div class="link-name"><span class="n">03</span>WePredict 人才適配與發展系統</div>
+          <div class="link-url">https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=48a04e0a-4c74-9876-0f53-0c766a37dd89</div>
+        </div>
+        <div class="link-acts">
+          <a class="act" href="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=48a04e0a-4c74-9876-0f53-0c766a37dd89" target="_blank" rel="noopener">開啟 ↗</a>
+          <button class="act" type="button" data-copy="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=48a04e0a-4c74-9876-0f53-0c766a37dd89">複製</button>
+        </div>
+      </div>
+
+      <div class="link-row">
+        <div>
+          <div class="link-name"><span class="n">04</span>WePredict 績效／離職風險識別預測系統</div>
+          <div class="link-url">https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=750e12eb-06e7-b543-45b8-021de1bbeb43</div>
+        </div>
+        <div class="link-acts">
+          <a class="act" href="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=750e12eb-06e7-b543-45b8-021de1bbeb43" target="_blank" rel="noopener">開啟 ↗</a>
+          <button class="act" type="button" data-copy="https://keid.nat.gov.tw/cloud/Web/AITools_solution_in.aspx?P=750e12eb-06e7-b543-45b8-021de1bbeb43">複製</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="note"><b>補助說明</b>　實際補助資格、額度、比例與申請方式，依各補助計畫及主管機關最新公告為準。上架方案內容與規格如有調整，以產發署 AI 工具庫頁面公告為準。</p>
+  </section>
+
+  <section>
+    <div class="contact">
+      <span class="sec-label" style="text-align:center">Contact</span>
+      <div class="contact-acts">
+        <a class="btn-p" href="mailto:contact@wepredict.io?subject=Traitty%20AI%20%E5%90%88%E4%BD%9C%E6%8E%A8%E5%BB%A3%E6%B4%BD%E8%A9%A2">contact@wepredict.io</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Traitty by WePredict｜大中華區服務中心 WePredict, YOD Mrkt</span>
+    <span><a href="mailto:contact@wepredict.io">contact@wepredict.io</a>　·　PerceptionPredict Authorized Partner</span>
+  </footer>
+
+</div>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var url = btn.getAttribute('data-copy');
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = '已複製';
+      btn.classList.add('done');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('done');
+      }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done, function () { fallback(url, done); });
+    } else {
+      fallback(url, done);
+    }
+  });
+});
+function fallback(text, done) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) { /* 複製失敗時網址仍顯示在頁面上，可手動選取 */ }
+  document.body.removeChild(ta);
+}
+</script>
+
+</body>
+</html>
