@@ -172,6 +172,44 @@ h2{font-size:clamp(22px,2.8vw,30px);font-weight:700;line-height:1.4;margin:0;tex
   .sol-go{grid-column:1 / -1;justify-self:start}
 }
 
+/* subsidy stages */
+.headline-amt{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-top:24px;
+  padding:16px 20px;border-radius:14px;
+  background:linear-gradient(120deg,rgba(130,122,254,0.14),rgba(232,96,184,0.08));
+  border:1px solid var(--primary-line);
+}
+.headline-amt .l{font-size:15px;color:var(--text-2)}
+.headline-amt .v{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--text);font-variant-numeric:tabular-nums}
+.stages{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.stage{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;
+}
+.stage-hi{background:rgba(130,122,254,0.10);border-color:var(--primary-line);box-shadow:0 0 40px rgba(130,122,254,0.12)}
+.stage-n{
+  font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;
+  color:var(--text-3);border:1px solid var(--line);border-radius:8px;padding:5px 10px;white-space:nowrap;
+}
+.stage-hi .stage-n{color:var(--primary);border-color:var(--primary-line);background:var(--primary-soft)}
+.stage-body{min-width:0}
+.stage-t{font-size:16px;font-weight:700;line-height:1.5;display:flex;flex-wrap:wrap;align-items:center;gap:9px}
+.stage-tag{
+  font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--teal);
+  background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.30);
+  padding:3px 10px;border-radius:100px;
+}
+.stage-d{font-size:14px;color:var(--text-2);line-height:1.7;margin-top:3px}
+.stage-amt{
+  text-align:right;font-family:var(--mono);font-size:14px;font-weight:600;color:var(--text);
+  line-height:1.6;font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.stage-amt span{display:block;font-weight:400;font-size:12.5px;color:var(--text-3)}
+@media(max-width:720px){
+  .stage{grid-template-columns:auto 1fr;row-gap:12px}
+  .stage-amt{grid-column:1 / -1;text-align:left;white-space:normal}
+}
+
 /* trust */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
 @media(max-width:640px){.stats{grid-template-columns:1fr}}
@@ -402,6 +440,48 @@ footer a:hover{color:var(--text)}
   </section>
 
   <section>
+    <span class="sec-label">Subsidy</span>
+    <h2>補助怎麼搭</h2>
+    <p class="sub">措施一「AI 數位轉型」分三個階段依序承接，先診斷、再導入、後研發。Traitty 的方案落在階段二的 AI 應用導入。</p>
+
+    <div class="headline-amt">
+      <span class="l">每家最高可獲輔導補助</span>
+      <span class="v">42 萬元</span>
+    </div>
+
+    <div class="stages">
+      <div class="stage">
+        <span class="stage-n">階段一</span>
+        <div class="stage-body">
+          <div class="stage-t">AI 診斷與輔導</div>
+          <div class="stage-d">專家進廠診斷 AI 成熟度，提出導入方向</div>
+        </div>
+        <div class="stage-amt">政府補助 19 萬<span>企業自付 1 萬</span></div>
+      </div>
+
+      <div class="stage stage-hi">
+        <span class="stage-n">階段二</span>
+        <div class="stage-body">
+          <div class="stage-t">AI 應用導入<span class="stage-tag">Traitty 方案在這裡</span></div>
+          <div class="stage-d">承接診斷結果，導入 AI 軟硬體工具與人才培訓</div>
+        </div>
+        <div class="stage-amt">工具導入最高 10 萬<span>人才培訓最高 12 萬</span></div>
+      </div>
+
+      <div class="stage">
+        <span class="stage-n">階段三</span>
+        <div class="stage-body">
+          <div class="stage-t">研發轉型補助</div>
+          <div class="stage-d">承接導入成效，提供研發與設備汰換補助</div>
+        </div>
+        <div class="stage-amt">企業自籌 50%<span>新設備購置不超過總經費 40%</span></div>
+      </div>
+    </div>
+
+    <p class="note"><b>補助說明</b>　實際補助資格、額度、比例與申請方式，依各補助計畫及主管機關最新公告為準。上架方案內容與規格如有調整，以產發署 AI 工具庫頁面公告為準。</p>
+  </section>
+
+  <section>
     <span class="sec-label">Why it works</span>
     <h2>技術基礎</h2>
     <p class="sub">Traitty 建立在 Perception AI 識才技術之上，由 WePredict 轉化為適合亞洲與中文企業快速導入的服務。</p>
@@ -523,7 +603,6 @@ footer a:hover{color:var(--text)}
       </div>
     </div>
 
-    <p class="note"><b>補助說明</b>　實際補助資格、額度、比例與申請方式，依各補助計畫及主管機關最新公告為準。上架方案內容與規格如有調整，以產發署 AI 工具庫頁面公告為準。</p>
   </section>
 
   <section>
