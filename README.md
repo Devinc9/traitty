@@ -9,6 +9,7 @@
 | `index.html` | `/traitty/` | Traitty AI 產品介紹頁 |
 | `traitty-keid.html` | `/traitty/traitty-keid.html` | 合作夥伴說明頁（目前對外分享的網址） |
 | `partner.html` | `/traitty/partner.html` | 同上，較早的網址，內容保持同步 |
+| `apply-guide.html` | `/traitty/apply-guide.html` | 製造業申請填表教學（含操作截圖，約 2.3MB） |
 
 `traitty-keid.html` 與 `partner.html` 內容完全相同，只有 `og:url` 指向各自的網址。修改時兩個檔案要一起更新。
 
