@@ -17,6 +17,10 @@
 
 `traitty-keid.html` 與 `partner.html` 內容完全相同，只有 `og:url` 指向各自的網址。修改時兩個檔案要一起更新。
 
+## 注意：.nojekyll
+
+根目錄的 `.nojekyll` 不能刪。GitHub Pages 預設用 Jekyll 建置，會略過底線開頭的資料夾（例如 `minibot/_ds/`、`wp_agent/_ds/`、`yodwp/_ds/` 裡的樣式與字型），沒有這個檔案頁面會變成沒有樣式。
+
 ## 部署
 
 推送到 `main` 後由 GitHub Pages 自動建置（Settings → Pages，來源為 `main` / root）。
