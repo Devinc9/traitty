@@ -1,0 +1,165 @@
+/* Traitty AI Design System
+ * Tokens — colors, typography, radii, shadows, spacing
+ */
+
+/* ─── Brand fonts ───────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+/* Brand script wordmark — Magnolia Script (uploaded by brand owner) */
+@font-face {
+  font-family: 'Magnolia Script';
+  src: url('fonts/Magnolia_Script.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ─── Brand color: purple gradient ───────────────────────── */
+  /* The two LOGO source colors — exact swatches owned by the brand */
+  --t-logo-purple:  #726EF3;   /* logo blue-violet */
+  --t-logo-pink:    #E968CD;   /* logo pink */
+
+  --t-brand-500:    #6A25F4;   /* primary purple, used for primary CTAs */
+  --t-brand-600:    #5B19D9;   /* pressed */
+  --t-brand-400:    #827AFE;   /* hover / accent */
+  --t-brand-300:    #A78BFA;   /* light purple */
+  --t-brand-100:    #EDE9FE;   /* purple wash, badge bg */
+  --t-brand-50:     #F5F3FF;   /* page tint */
+
+  /* Gradient stops the brand uses everywhere — wordmark, hero, CTAs */
+  --t-grad-blue:    #5270FF;   /* gradient start (cool blue-violet) */
+  --t-grad-violet:  #8C6DEE;   /* gradient mid (lavender) */
+  --t-grad-pink:    #E860B8;   /* gradient end (pink) */
+  --t-grad-brand:   linear-gradient(135deg, var(--t-grad-blue) 0%, var(--t-grad-violet) 50%, var(--t-grad-pink) 100%);
+  --t-grad-button:  linear-gradient(135deg, #6A25F4 0%, #827AFE 100%);
+
+  /* Page backgrounds — light theme is a soft purple-tinted radial */
+  --t-bg-page:      radial-gradient(ellipse at top, #FFFFFF 0%, #F3F0FF 40%, #E0E7FF 100%);
+  --t-bg-app:       #FBFAFF;       /* app frame */
+  --t-bg-canvas:    #FFFFFF;       /* main chat canvas */
+  --t-bg-sidebar:   #FBFAFF;       /* sidebar */
+  --t-bg-chip:      #FFFFFF;       /* quick-prompt chip */
+  --t-bg-bubble-ai: #F8F7FE;       /* AI message bubble */
+
+  /* Foregrounds (Tailwind-like neutrals — match metadata) */
+  --t-fg-1:         #111827;       /* primary headings */
+  --t-fg-2:         #374151;       /* body */
+  --t-fg-3:         #6B7280;       /* muted */
+  --t-fg-4:         #9CA3AF;       /* placeholder / disabled */
+  --t-fg-5:         #D4D7DA;       /* dividers */
+  --t-fg-on-brand:  #FFFFFF;       /* text on brand fills */
+
+  /* Avatar tints (from candidate cards) */
+  --t-avatar-violet:#C7BFFF;
+  --t-avatar-blue:  #BAC8FF;
+  --t-avatar-peach: #FFD8B8;
+  --t-avatar-mint:  #6FE7C5;
+
+  /* Borders */
+  --t-border-soft:  rgba(163,163,163,0.35);
+  --t-border-card:  rgba(212,215,218,0.8);
+  --t-border-brand: rgba(106,37,244,0.4);
+
+  /* Shadows */
+  --t-shadow-sm:    0 1px 2px rgba(0,0,0,0.04);
+  --t-shadow-md:    0 4px 12px rgba(0,0,0,0.08);
+  --t-shadow-lg:    0 10px 40px -10px rgba(0,0,0,0.08);
+  --t-shadow-glow:  0 8px 30px rgba(106,37,244,0.20);
+  --t-shadow-app:   0 4px 4px rgba(0,0,0,0.25);
+
+  /* Radii */
+  --t-r-xs:         6px;
+  --t-r-sm:         10px;
+  --t-r-md:         14px;
+  --t-r-lg:         20px;
+  --t-r-xl:         32px;
+  --t-r-app:        41px;        /* outer app frame */
+  --t-r-pill:       9999px;
+
+  /* Spacing scale */
+  --t-s-1:          4px;
+  --t-s-2:          8px;
+  --t-s-3:          12px;
+  --t-s-4:          16px;
+  --t-s-5:          20px;
+  --t-s-6:          24px;
+  --t-s-8:          32px;
+  --t-s-10:         40px;
+  --t-s-12:         48px;
+
+  /* ─── Type families ──────────────────────────────────────── */
+  --t-font-sans:    "Inter", "Noto Sans TC", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --t-font-zh:      "Noto Sans TC", "Inter", -apple-system, sans-serif;
+  --t-font-script:  "Magnolia Script", "Pacifico", "Brush Script MT", cursive;  /* brand wordmark */
+
+  /* ─── Type scale (semantic) ──────────────────────────────── */
+  /* Display — used on hero "人才解析" */
+  --t-h1-size:      36px;
+  --t-h1-weight:    500;
+  --t-h1-lh:        1.25;
+
+  /* Section heading */
+  --t-h2-size:      22px;
+  --t-h2-weight:    700;
+  --t-h2-lh:        1.3;
+
+  /* Card title / chat bubble heading */
+  --t-h3-size:      18px;
+  --t-h3-weight:    600;
+  --t-h3-lh:        1.4;
+
+  /* Body */
+  --t-body-size:    14px;
+  --t-body-weight:  400;
+  --t-body-lh:      1.65;
+
+  /* Subtitle / label */
+  --t-sub-size:     16px;
+  --t-sub-weight:   500;
+  --t-sub-lh:       1.6;
+
+  /* Caption — sidebar dates, tiny meta */
+  --t-cap-size:     12px;
+  --t-cap-weight:   500;
+  --t-cap-lh:       1.4;
+
+  /* Eyebrow — uppercase TRAITTY AI label */
+  --t-eyebrow-size: 11px;
+  --t-eyebrow-weight: 700;
+  --t-eyebrow-track: 0.12em;
+
+  /* Easing */
+  --t-ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+  --t-ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+  --t-dur-fast:     120ms;
+  --t-dur-base:     200ms;
+  --t-dur-slow:     400ms;
+}
+
+/* ─── Semantic typography classes ───────────────────────────── */
+.t-display { font-family: var(--t-font-zh); font-size: var(--t-h1-size); font-weight: var(--t-h1-weight); line-height: var(--t-h1-lh); color: var(--t-fg-1); letter-spacing: 0.01em; }
+.t-h2      { font-family: var(--t-font-sans); font-size: var(--t-h2-size); font-weight: var(--t-h2-weight); line-height: var(--t-h2-lh); color: var(--t-fg-1); }
+.t-h3      { font-family: var(--t-font-sans); font-size: var(--t-h3-size); font-weight: var(--t-h3-weight); line-height: var(--t-h3-lh); color: var(--t-fg-1); }
+.t-sub     { font-family: var(--t-font-zh); font-size: var(--t-sub-size); font-weight: var(--t-sub-weight); line-height: var(--t-sub-lh); color: var(--t-fg-3); }
+.t-body    { font-family: var(--t-font-sans); font-size: var(--t-body-size); font-weight: var(--t-body-weight); line-height: var(--t-body-lh); color: var(--t-fg-2); }
+.t-caption { font-family: var(--t-font-sans); font-size: var(--t-cap-size); font-weight: var(--t-cap-weight); line-height: var(--t-cap-lh); color: var(--t-fg-4); }
+.t-eyebrow { font-family: var(--t-font-sans); font-size: var(--t-eyebrow-size); font-weight: var(--t-eyebrow-weight); letter-spacing: var(--t-eyebrow-track); text-transform: uppercase; color: var(--t-fg-4); }
+.t-grad    { background: var(--t-grad-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ─── Dark theme overrides ──────────────────────────────────── */
+.t-dark {
+  --t-bg-page:      radial-gradient(ellipse at top, #1a0f2e 0%, #0d0518 50%, #050008 100%);
+  --t-bg-app:       #15091F;
+  --t-bg-canvas:    #1A0E27;
+  --t-bg-sidebar:   #15091F;
+  --t-bg-chip:      rgba(255,255,255,0.04);
+  --t-bg-bubble-ai: rgba(255,255,255,0.04);
+  --t-fg-1:         #F4F1FA;
+  --t-fg-2:         rgba(244,241,250,0.85);
+  --t-fg-3:         rgba(244,241,250,0.6);
+  --t-fg-4:         rgba(244,241,250,0.4);
+  --t-fg-5:         rgba(255,255,255,0.1);
+  --t-border-soft:  rgba(255,255,255,0.12);
+  --t-border-card:  rgba(255,255,255,0.08);
+}

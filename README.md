@@ -12,6 +12,7 @@
 | `apply-guide.html` | `/traitty/apply-guide.html` | 製造業申請填表教學（含操作截圖，約 2.3MB）。受眾與合作夥伴頁不同，站內不互相連結，單獨提供網址 |
 | `wepredict.html` | `/traitty/wepredict.html` | WePredict AI 人才通頁面（素材放在 `wepredict-assets/`，約 6.8MB，字型依需要載入） |
 | `minibot/index.html` | `/traitty/minibot/` | MiniBot AI 客服小幫手銷售頁（素材與 React 都放在 `minibot/` 內，不依賴 CDN；字型來自 Google Fonts） |
+| `wp_agent/index.html` | `/traitty/wp_agent/` | WePredict AI 企業助理銷售頁（含 6 支操作影片，素材與 React 都放在 `wp_agent/` 內；字型來自 Google Fonts） |
 
 `traitty-keid.html` 與 `partner.html` 內容完全相同，只有 `og:url` 指向各自的網址。修改時兩個檔案要一起更新。
 
