@@ -14,6 +14,7 @@
 | `minibot/index.html` | `/traitty/minibot/` | MiniBot AI 客服小幫手銷售頁（素材與 React 都放在 `minibot/` 內，不依賴 CDN；字型來自 Google Fonts） |
 | `wp_agent/index.html` | `/traitty/wp_agent/` | WePredict AI 企業助理銷售頁（含 6 支操作影片，素材與 React 都放在 `wp_agent/` 內；字型來自 Google Fonts） |
 | `yodwp/index.html` | `/traitty/yodwp/` | YOD 宥定｜企業 AI 解決方案入口頁（三個產品入口；素材與 React 都放在 `yodwp/` 內；字型來自 Google Fonts） |
+| `ida_ai/index.html` | `/traitty/ida_ai/` | 產業競爭力輔導團申請操作指引 v13（單檔，圖片已內嵌，約 1MB；內含製造業營業項目查詢，會呼叫 Google Apps Script） |
 
 `traitty-keid.html` 與 `partner.html` 內容完全相同，只有 `og:url` 指向各自的網址。修改時兩個檔案要一起更新。
 
