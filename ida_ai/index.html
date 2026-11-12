@@ -143,6 +143,23 @@ img { max-width: 100%; }
   margin: 8px auto 0;
   text-wrap: balance;
 }
+.header .help {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.cta.cta-ghost {
+  background: transparent;
+  color: var(--accent-text);
+  border: 1.5px solid var(--accent);
+  padding: 7px 16px;
+}
+.cta.cta-ghost:hover { background: var(--accent-soft); }
 
 /* ── Overview cards ── */
 .overview {
@@ -809,6 +826,10 @@ img { max-width: 100%; }
   <h1>產業競爭力輔導團<br>AI人才通申請操作指引</h1>
   <p class="sub">按指引進行三段操作，約 30 分鐘完成。</p>
   <p class="sub-note">完成輔導、採購人才通 AI 工具後，即可參加AI課程並獲得現金補貼。</p>
+  <div class="help">
+    <span>需要專人協助？</span>
+    <a class="cta cta-ghost" href="https://lin.ee/zyP81tn" target="_blank" rel="noopener"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11L11 5M11 5H6M11 5V10"/></svg>與我們聯繫</a>
+  </div>
 </header>
 <section class="check" id="check" aria-labelledby="ck-h">
   <div class="check-kicker">申請前先確認</div>
