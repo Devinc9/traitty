@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YOD × WePredict 企業 AI 方案地圖</title>
+<meta name="description" content="讓企業的每一天多一份好幫手。依日常需求導入合適的 AI，從人才、作業流程到官網客服逐步切入。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="YOD AI解決方案和顧問支援服務">
+<meta property="og:description" content="讓企業的每一天多一份好幫手。依日常需求導入合適的 AI，從人才、作業流程到官網客服逐步切入。">
+<meta property="og:url" content="https://devinc9.github.io/traitty/solutions/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Traitty AI Design System — dark, single theme by choice.
+   Layout idea: compact hero, then straight into the wall. A sticky bar (category tabs + "我想解決" chips)
+   drives a 3-column wall of pain → solution → outcome cards; a drawer holds the full spec. */
+:root{
+  --bg:#0B0614; --surface:#140A21; --surface-2:#1D1030;
+  --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
+  --fg:#F4F1FA; --fg-2:rgba(244,241,250,.80); --fg-3:rgba(244,241,250,.64);
+  --brand:#8C6DEE; --grad:linear-gradient(90deg,#5270FF 0%,#8C6DEE 50%,#E860B8 100%);
+  --c-talent:#7C93FF; --c-ops:#5FD4E8; --c-mkt:#F07CC8; --c-consult:#A3AEC2;
+  --line-green:#06C755;
+  --f-zh:"Noto Sans TC","Inter",system-ui,sans-serif;
+  --f-sans:"Inter","Noto Sans TC",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-zh);-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid #C4B3FF;outline-offset:3px;border-radius:8px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ground */
+.glow{position:absolute;inset:0 0 auto;height:900px;pointer-events:none;z-index:0;
+  background:radial-gradient(600px 380px at 12% -5%,rgba(82,112,255,.28),transparent 70%),radial-gradient(520px 360px at 92% 10%,rgba(232,96,184,.18),transparent 70%)}
+.gridbg{position:absolute;inset:0 0 auto;height:820px;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:48px 48px;mask-image:linear-gradient(#000 40%,transparent)}
+header,main,footer{position:relative;z-index:1}
+
+/* nav */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font:700 15px/1 var(--f-sans);letter-spacing:.04em}
+.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;font:600 14px/1 var(--f-zh);text-decoration:none;border:1px solid var(--line-2);background:rgba(255,255,255,.04);cursor:pointer;transition:transform .12s var(--ease),border-color .2s,background .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px);border-color:rgba(196,179,255,.55)}
+.btn-line{background:var(--line-green);border-color:var(--line-green);color:#04210F}
+.btn-line:hover{border-color:#6BF0A4;background:#19D466}
+.btn-line .mono{font-weight:700}
+.btn-ghost{background:transparent}
+.btn-sm{padding:7px 12px;font-size:13px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;padding:36px 0 8px}
+.hero-r{padding-bottom:8px}
+.kicker{font:500 12px/1 var(--f-mono);color:var(--fg-3);letter-spacing:.06em}
+.kicker b{color:#C4B3FF;font-weight:500}
+h1{font:900 clamp(34px,4.6vw,52px)/1.2 var(--f-zh);letter-spacing:.02em;margin:16px 0 14px;text-wrap:balance}
+h1 .k{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:17px;line-height:1.75;color:var(--fg-2);margin:0 0 8px;max-width:30em}
+.how-x{list-style:none;margin:22px 0 24px;padding:0;display:grid;gap:10px;counter-reset:s}
+.how li{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:baseline;font-size:15px;color:var(--fg-2);counter-increment:s}
+.how li::before{content:"0" counter(s);font:700 12px/1 var(--f-mono);color:#C4B3FF;padding-top:3px}
+.how b{color:var(--fg)}
+.reassure{font-size:13px;color:var(--fg-3);margin:10px 0 0}
+
+/* sections */
+.sec{position:relative;padding:56px 0 48px;border-top:1px solid var(--line)}
+.sec::before{content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:min(1200px,100%);height:1px;background:linear-gradient(90deg,transparent,rgba(196,179,255,.55),transparent)}
+.sec-band{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0))}
+.sec-h{display:grid;gap:10px;margin-bottom:24px}
+.sec-h .idx{font:500 12px/1 var(--f-mono);color:#C4B3FF;letter-spacing:.08em}
+.sec-h h2{margin:0;font:900 clamp(26px,3vw,34px)/1.25 var(--f-zh);letter-spacing:.02em;text-wrap:balance}
+.sec-h p{margin:0;color:var(--fg-2);font-size:16px;line-height:1.7;max-width:40em}
+#solutions{margin-top:40px}
+@media (min-width:981px){ .grp.two{grid-template-columns:repeat(2,minmax(0,1fr))} }
+/* filter bar */
+.bar{position:sticky;top:0;z-index:6;padding:12px 0;background:rgba(11,6,20,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bar .wrap{display:grid;gap:10px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.tab{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;border:1px solid transparent;background:transparent;cursor:pointer;font:500 14px/1 var(--f-zh);color:var(--fg-2);white-space:nowrap;transition:all .2s}
+.tab:hover{color:#fff;background:rgba(255,255,255,.04)}
+.tab[aria-selected="true"]{color:#fff;background:rgba(255,255,255,.07);border-color:var(--line-2)}
+.tab .n{font:500 11px/1 var(--f-mono);color:var(--fg-3)}
+.shape{display:inline-block;flex:none}
+.shape.s-talent{width:9px;height:9px;border-radius:50%;background:var(--c-talent)}
+.shape.s-ops{width:9px;height:9px;border-radius:1px;background:var(--c-ops)}
+.shape.s-mkt{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:9px solid var(--c-mkt)}
+.shape.s-consult{width:8px;height:8px;transform:rotate(45deg);background:var(--c-consult)}
+.needs{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.needs .lab{font:500 13px/1 var(--f-zh);color:var(--fg-3);white-space:nowrap;margin-right:4px}
+.chip{padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);cursor:pointer;font:500 13px/1 var(--f-zh);color:var(--fg-2);white-space:nowrap;transition:all .2s}
+.chip:hover{border-color:var(--line-2);color:#fff}
+.chip[aria-pressed="true"]{background:rgba(140,109,238,.22);border-color:#A992F5;color:#fff}
+.status{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13.5px;color:var(--fg-2)}
+.status b{font:700 14px/1 var(--f-mono);color:#fff}
+.status .clear[hidden]{display:none}
+.status .clear{all:unset;cursor:pointer;font:500 12.5px/1 var(--f-mono);color:#C4B3FF;border-bottom:1px dotted}
+.status .push{margin-left:auto}
+.needs-select{display:none}
+
+/* wall */
+.wall{padding:4px 24px 8px}
+.grp{--c:var(--brand);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px;padding:22px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(180deg,color-mix(in srgb,var(--c) 9%,transparent),rgba(255,255,255,.015) 140px)}
+.grp-h{grid-column:1/-1;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:0 2px 12px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.grp-h .gt{margin:0;font:700 22px/1.3 var(--f-zh);display:flex;align-items:center;gap:10px}
+.grp-h .code{font:500 12px/1 var(--f-mono);color:var(--fg-3)}
+.grp-h p{margin:0 0 0 auto;color:var(--fg-2);font-size:14px}
+.card{--c:var(--brand);position:relative;display:flex;flex-direction:column;text-align:left;border-radius:18px;border:1px solid var(--line);background:#100819;cursor:pointer;overflow:hidden;isolation:isolate;padding:0;transition:transform .25s var(--ease),opacity .2s var(--ease),border-color .25s,box-shadow .25s}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--c) 18%,transparent),transparent 45%);opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--c) 50%,transparent)}
+.card:hover::before{opacity:1}
+.card .edge{position:absolute;left:0;right:0;top:0;height:0;border-top:2px solid var(--c)}
+.card[data-cat="ops"] .edge{border-top:4px double var(--c)}
+.card[data-cat="mkt"] .edge{border-top:2px dashed var(--c)}
+.card[data-cat="consult"] .edge{border-top:2px dotted var(--c)}
+.card.dim{opacity:.25}
+.card.hit{border-color:color-mix(in srgb,var(--c) 70%,transparent);box-shadow:0 14px 40px -16px color-mix(in srgb,var(--c) 70%,transparent)}
+.card .hitmark{display:none;font:700 11px/1 var(--f-mono);color:#04210F;background:#6BF0A4;padding:4px 7px;border-radius:6px}
+.card.hit .hitmark{display:inline-block}
+.c-top{display:flex;align-items:center;gap:8px;padding:18px 20px 0;font:700 12px/1 var(--f-mono);color:var(--c)}
+.c-top .cat{color:var(--fg-3);font-weight:500}
+.c-top .sp{margin-left:auto;display:flex;gap:6px;align-items:center}
+.badge{font:700 11.5px/1 var(--f-zh);padding:5px 9px;border-radius:999px;background:var(--grad);color:#fff}
+.c-pain{margin:14px 20px 0;font-size:14px;line-height:1.55;color:var(--fg-3)}
+.c-pain .lb{font:500 11px/1 var(--f-mono);color:var(--fg-3);margin-right:8px;letter-spacing:.06em}
+.c-name{margin:16px 20px 0;font:700 22px/1.25 var(--f-zh)}
+.c-name small{display:block;margin-top:4px;font:500 14px/1.35 var(--f-zh);color:var(--c)}
+.c-out{margin:12px 20px 0;font-size:15.5px;line-height:1.6;color:var(--fg);display:grid;grid-template-columns:18px 1fr;gap:6px}
+.c-out::before{content:"→";color:var(--c);font-family:var(--f-mono)}
+.c-tags{display:flex;gap:6px;flex-wrap:wrap;margin:14px 20px 0}
+.tag{font:500 12px/1 var(--f-zh);padding:5px 9px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--fg-2)}
+.c-more{margin-top:auto;padding:18px 20px 18px;font:500 12px/1 var(--f-mono);color:var(--fg-3)}
+.card:hover .c-more{color:var(--c)}
+
+/* principles + contact */
+.principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.principles div{background:var(--surface);padding:20px}
+.principles .h{font:500 12px/1 var(--f-mono);color:#C4B3FF;margin-bottom:10px}
+.principles p{margin:0;font-size:14.5px;line-height:1.7;color:var(--fg-2)}
+.contact{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding:28px;border-radius:24px;border:1px solid rgba(196,179,255,.3);background:linear-gradient(120deg,rgba(82,112,255,.14),rgba(232,96,184,.10));margin-bottom:8px}
+.contact h2{margin:0 0 6px;font:900 26px/1.3 var(--f-zh)}
+.contact p{margin:0;color:var(--fg-2)}
+.contact .ids{font:500 13px/1.7 var(--f-mono);color:var(--fg-3);margin-top:10px}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;font:400 12.5px/1.8 var(--f-mono);color:var(--fg-3)}
+footer a{color:var(--fg-2);text-decoration:none;border-bottom:1px dotted var(--fg-3)}
+
+/* drawer */
+.scrim{position:fixed;inset:0;z-index:20;background:rgba(5,2,10,.62);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{--c:var(--brand);position:fixed;z-index:21;left:50%;top:50%;width:min(760px,calc(100% - 32px));max-height:min(86vh,860px);background:var(--surface-2);border:1px solid var(--line-2);border-radius:24px;overflow:hidden;transform:translate(-50%,-46%) scale(.97);opacity:0;visibility:hidden;transition:transform .35s var(--ease),opacity .25s var(--ease),visibility 0s .35s;display:flex;flex-direction:column;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px color-mix(in srgb,var(--c) 25%,transparent)}
+.drawer.open{transform:translate(-50%,-50%);opacity:1;visibility:visible;transition:transform .35s var(--ease),opacity .25s var(--ease)}
+.d-head{padding:18px 24px 16px;border-bottom:1px solid var(--line);position:relative}
+.d-head::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,var(--c),transparent)}
+.d-head::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c)}
+.d-nav{display:flex;align-items:center;gap:8px;font:500 12px/1 var(--f-mono);color:var(--fg-3)}
+.d-nav .code{color:var(--c);font-weight:700;font-size:13px}
+.ibtn{width:34px;height:34px;border-radius:10px;border:1px solid var(--line-2);background:rgba(255,255,255,.04);cursor:pointer;display:grid;place-items:center}
+.ibtn:hover{border-color:#C4B3FF}
+.d-nav .gap{margin-left:auto}
+.d-title{font:900 30px/1.25 var(--f-zh);margin:14px 0 4px}
+.d-sub{color:var(--c);font:500 15px/1.4 var(--f-zh);margin:0}
+.d-body{padding:20px 24px 24px;overflow-y:auto;display:grid;gap:12px}
+.step{display:grid;grid-template-columns:28px 1fr;gap:12px}
+.step .no{font:700 12px/1 var(--f-mono);color:var(--c);padding-top:16px;text-align:right}
+.spec{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.025)}
+.spec h3{margin:0 0 8px;font:500 12px/1 var(--f-mono);color:var(--fg-3);letter-spacing:.08em}
+.spec p{margin:0;font-size:15.5px;line-height:1.75;color:var(--fg-2)}
+.spec p strong{color:#fff}
+.spec.out{background:color-mix(in srgb,var(--c) 12%,transparent);border-color:color-mix(in srgb,var(--c) 42%,transparent)}
+.spec.out p{color:var(--fg)}
+.hl{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px}
+.hl li{display:grid;grid-template-columns:16px 1fr;gap:8px;font-size:14.5px;line-height:1.6;color:var(--fg-2)}
+.hl li::before{content:"";width:12px;height:1px;background:var(--c);margin-top:11px}
+.hl-h{font:500 12px/1 var(--f-mono);color:var(--fg-3);letter-spacing:.08em;margin-top:8px}
+.d-foot{margin-top:auto;padding:14px 24px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:rgba(11,6,20,.4)}
+.d-foot .note{flex-basis:100%;font-size:12.5px;color:var(--fg-3)}
+.toast{font:500 12px/1 var(--f-mono);color:#6BF0A4;opacity:0;transition:opacity .2s}
+.toast.on{opacity:1}
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .grp{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .principles{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .grp{grid-template-columns:1fr;padding:16px}
+  .wall{padding:4px 16px 8px}
+  .grp-h p{margin:0;flex-basis:100%}
+  .contact{grid-template-columns:1fr}
+  .needs .chip{display:none}
+  .needs-select{display:block;width:100%;padding:9px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line-2);color:var(--fg);font:500 14px var(--f-zh)}
+  .nav .hide-sm{display:none}
+  .drawer{max-height:90vh;width:calc(100% - 20px)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<div class="gridbg" aria-hidden="true"></div>
+
+<header class="wrap nav">
+  <div class="brand">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5270FF"/><stop offset=".5" stop-color="#8C6DEE"/><stop offset="1" stop-color="#E860B8"/></linearGradient></defs><path d="M12 1.5c.7 5.3 3.2 7.8 10.5 10.5-7.3 2.7-9.8 5.2-10.5 10.5C11.3 17.2 8.8 14.7 1.5 12 8.8 9.3 11.3 6.8 12 1.5z" fill="url(#g1)"/></svg>
+    <b>YOD 宥定 × WePredict</b>
+  </div>
+  <div class="row">
+    <a class="btn btn-ghost btn-sm hide-sm" href="mailto:contact@wepredict.io">contact@wepredict.io</a>
+    <a class="btn btn-line btn-sm" href="https://line.me/R/ti/p/@451dutnw" target="_blank" rel="noopener">加 LINE <span class="mono">@451dutnw</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero" aria-labelledby="h1">
+    <div class="hero-l">
+      <div class="kicker">ENTERPRISE AI · <b>4</b> 大類 · <b>10</b> 項方案</div>
+      <h1 id="h1">把<span class="k">人</span>帶好。<br>把<span class="k">事</span>做好。<br>讓<span class="k">服務</span>接得上。</h1>
+    </div>
+    <div class="hero-r">
+      <p class="sub">讓企業的每一天多一份好幫手。依日常需求導入合適的 AI，從人才、作業流程到官網客服逐步切入。</p>
+      <div class="row">
+        <a class="btn btn-line" href="https://line.me/R/ti/p/@451dutnw" target="_blank" rel="noopener">加 LINE 預約示範</a>
+        <a class="btn" href="#solutions">看全部方案 ↓</a>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="sec" id="solutions" aria-labelledby="secSol">
+  <div class="wrap sec-h">
+    <span class="idx">01 / SOLUTIONS</span>
+    <h2 id="secSol">依需求找到對應方案</h2>
+    <p>選擇類別，或點選想解決的問題，對應方案會亮起；點卡片看完整說明。</p>
+  </div>
+  <div class="bar" id="bar">
+    <div class="wrap">
+      <div class="tabs" role="tablist" aria-label="方案類別" id="tabs"></div>
+      <div class="needs" id="needs" role="group" aria-label="我想解決"><span class="lab">我想解決</span></div>
+      <label class="sr" for="needSel">我想解決</label>
+      <select id="needSel" class="needs-select"></select>
+      <div class="status"><span id="count" aria-live="polite"></span><button class="clear" id="clear" type="button" hidden>清除篩選</button>
+        <a class="btn btn-line btn-sm push" id="barCta" href="https://line.me/R/ti/p/@451dutnw" target="_blank" rel="noopener">預約情境示範</a></div>
+    </div>
+  </div>
+
+  <div class="wrap wall" id="wall"></div>
+  </section>
+
+  <section class="sec sec-band" id="start" aria-labelledby="secStart">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="idx">02 / HOW TO START</span>
+      <h2 id="secStart">導入方式</h2>
+      <p>不用一次改變全部，從每天都會遇到的一件事開始。</p>
+    </div>
+    <div class="principles">
+      <div><div class="h">01 / 從一件事開始</div><p>先挑一項最常卡住的工作試行，驗證流程後再逐步擴展，不用一次改變全部。</p></div>
+      <div><div class="h">02 / 人確認，AI 接手</div><p>需要確認的事項由有權人員決定；AI 負責整理、查詢、開單與跟進。</p></div>
+      <div><div class="h">03 / 特質資料有界線</div><p>人格差異影響「如何溝通」，不改變基本尊重、員工權益與管理界線，也不作為定罪或診斷依據。</p></div>
+    </div>
+  </div>
+  </section>
+
+  <section class="sec" id="contact" aria-labelledby="secContact">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="idx">03 / CONTACT</span>
+      <h2 id="secContact">預約情境示範</h2>
+    </div>
+    <div class="contact">
+      <div>
+        <h2>客戶轉介與洽詢</h2>
+        <p>告訴我們您想先解決哪一件事，我們安排對應的情境示範。</p>
+        <div class="ids">LINE @451dutnw ・ contact@wepredict.io</div>
+      </div>
+      <div class="row">
+        <a class="btn btn-line" href="https://line.me/R/ti/p/@451dutnw" target="_blank" rel="noopener">加 LINE 預約示範</a>
+        <a class="btn" href="mailto:contact@wepredict.io">寄信洽詢</a>
+      </div>
+    </div>
+  </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div>YOD 宥定行銷 × WePredict ・ 企業 AI 方案地圖 v2.3</div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle" aria-hidden="true">
+  <div class="d-head">
+    <div class="d-nav">
+      <span class="code" id="dCode"></span><span id="dCat"></span>
+      <span class="gap"></span>
+      <button class="ibtn" id="dPrev" type="button" aria-label="上一項方案"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button class="ibtn" id="dNext" type="button" aria-label="下一項方案"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button class="ibtn" id="dClose" type="button" aria-label="關閉"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <h2 class="d-title" id="dTitle"></h2>
+    <p class="d-sub" id="dSub"></p>
+  </div>
+  <div class="d-body" id="dBody"></div>
+  <div class="d-foot" id="dFoot"></div>
+</aside>
+
+<script>
+(() => {
+const LINE = "https://line.me/R/ti/p/@451dutnw";
+const CATS = [
+  {id:"talent", label:"人才AI",  code:"PEOPLE",  color:"#7C93FF", line:"看懂人才差異，知道下一步怎麼帶。"},
+  {id:"ops",    label:"營運AI",  code:"WORK",    color:"#5FD4E8", line:"從訊息到報表，讓 AI 接著做。"},
+  {id:"mkt",    label:"行銷AI",  code:"SERVICE", color:"#F07CC8", line:"常被問的問題，先讓 AI 回答。"},
+  {id:"consult",label:"顧問服務", code:"ADVISORY",color:"#A3AEC2", line:"顧問陪同，把流程、制度與計畫建起來。"},
+];
+const NEEDS = [
+  {id:"lead",   label:"新人帶不上手、團隊磨合卡關", ids:["p01"]},
+  {id:"hire",   label:"招募常看走眼",               ids:["p02","p03","p08"]},
+  {id:"predict",label:"預測績效與離職風險",         ids:["p02"]},
+  {id:"retain", label:"想及早看見留才風險",         ids:["p01","p02"]},
+  {id:"eff",    label:"AI 提升工作效率",            ids:["p04"]},
+  {id:"retype", label:"資料在系統間反覆重打",       ids:["p04","p05"]},
+  {id:"stock",  label:"訂單庫存分散、交期靠人問",   ids:["p05"]},
+  {id:"recon",  label:"月底對帳費時",               ids:["p05"]},
+  {id:"faq",    label:"客服一直回答同樣問題",       ids:["p06"]},
+  {id:"shop",   label:"顧客找不到合適商品",         ids:["p07"]},
+  {id:"risk",   label:"職場霸凌與不法侵害風險",     ids:["p09"]},
+  {id:"fund",   label:"想用政府資源推動轉型",       ids:["p10","p01"]},
+];
+/* fn / who / gain: verbatim from 產品與服務速查表 v1.14. pain / out: trimmed from the same sheet. hl: from the product pages. */
+const P = [
+ {id:"p01",cat:"talent",name:"AI 人才通",sub:"主管的用人軍師，帶人神隊友",badge:"政府主要補助",
+  pain:"新人適應不順，團隊分工後反覆卡關",out:"主管更快找到適合個人的溝通與分工方式",tags:["個人化面試題本","28 項管理工具"],
+  fn:"全方位人才決策 AI，從選才延伸到在職團隊協作與留才，企業最佳管理策略工具。",
+  who:["人資與部門主管。","新人適應不順，或團隊分工後反覆卡關、人員職務調動等。"],
+  gain:"主管更快找到適合個人的溝通與分工方式，減少新人融入與團隊磨合時的反覆試錯，提高工作效率與留任機會。",
+  hl:["5 大人才管理主題、28 項標準化 AI 管理工具，每項交付固定成果：題本、指南、手冊、談話腳本","個人使用說明書：工作動能來源、耗能情境與溝通建議","導入方案「帶人有底 90 天」：顧問陪同完成第一次試帶"],
+  links:[["AI 人才通介紹","https://yodm.tw/_talent_master"],["Traitty AI 實測","https://www.wepredict.io/traittyaidemo"]]},
+ {id:"p02",cat:"talent",name:"PFM",sub:"績效指紋模型",
+  pain:"想用自家數據改善關鍵職位的選才或留才",out:"依自家績效指標比較人才，及早找出留才風險",tags:["績效預測","離職風險"],
+  fn:"以企業歷史績效或留任資料與人才特質，建立職務專屬模型，預測績效與離職風險。",
+  who:[null,"已有業績、服務品質或留任紀錄的企業，想用自家數據改善關鍵職位的選才或留才。"],
+  gain:"讓用人主管依自家績效指標比較人才，或及早找出值得關注的留才風險。",
+  hl:["三步驟：定義本質（特質）→ 掌握數據（企業績效）→ 建立模型（機器學習）","面試前預測人才的銷售業績、顧客滿意度與離職風險","以九宮格進行人才盤點與團隊優化"],
+  links:[["WePredict 官網","https://www.wepredict.io"]]},
+ {id:"p03",cat:"talent",name:"JCA",sub:"職位客製人才評鑑",
+  pain:"通用評鑑難以反映實際工作差異",out:"面試前就能看出與職位相關的強項特質與適性分數",tags:["職位適合度評分","線上特質評鑑"],
+  fn:"招募前依職務內容與企業需求設計線上特質評鑑，提供職位適合度評分與相關特質說明。",
+  who:[null,"經常招募同一職位，或同一職稱有不同任務，通用評鑑難以反映實際工作差異。"],
+  gain:"面試前就能看出與職位相關的強項特質與適性分數，讓不同主管依一致標準比較人選。",
+  hl:[], links:[["WePredict 官網","https://www.wepredict.io"]]},
+ {id:"p04",cat:"ops",name:"AI Agent",sub:"企業助理",
+  pain:"接單或請購要在多套工具間搬資料",out:"直接用 LINE 和 AI 對話，同一筆資料可接續下一步",tags:["LINE 交辦","開單與跟進"],
+  fn:"建置銷售、採購、庫存與財會工作流。可以從訊息及文件擷取資料，接續系統查詢、開單、人工核准與追蹤。",
+  who:["業務、採購、財會與營運。","接單或請購要在多套工具間搬資料，跨部門交接靠人工追問。"],
+  gain:"直接用 LINE 和 AI 對話，同一筆資料可接續下一步，減少重打與漏接。主管能掌握卡在哪一關，業務也能更快回覆報價與進度。",
+  hl:["輸入來源：LINE、Email、照片、語音、PDF、Excel","可沿用既有 ERP、進銷存、CRM 與工作工具","重要內容先呈現供確認，再執行"],
+  links:[["AI 企業助理介紹","https://yodm.tw/wp_agent"]]},
+ {id:"p05",cat:"ops",name:"ERP 客製",sub:"與 AI 整合",
+  pain:"訂單與庫存各自記錄，交期靠人工查問",out:"訂單、採購、庫存與出貨用同一套數字",tags:["系統串接","缺料與卡關可視"],
+  fn:"客製化建置 ERP 並整合 AI 應用，串接既有系統中的訂單、採購、庫存及出貨。",
+  who:["製造、批發與零售。","訂單與庫存各自記錄，交期靠人工查問。"],
+  gain:"訂單、採購、庫存與出貨用同一套數字，不必跨系統重打與月底對帳；老闆隨時掌握缺料與卡關，交期與進貨決策不再靠問人。",
+  hl:[], links:[]},
+ {id:"p06",cat:"mkt",name:"MiniBot",sub:"AI 小客服",
+  pain:"客服經常重複回答規格、運費與付款方式",out:"訪客可先查常見資訊，減少等待客服回覆",tags:["官網問答","答不出清單"],
+  fn:"把產品與服務說明整理成知識稿，支援試問、發布及官網問答。答不出時提示真人聯絡方式，並列入清單供補充。",
+  who:["有官網的品牌與服務商。","客服經常重複回答商品規格、運費、付款方式或服務規則。"],
+  gain:"訪客可先查常見資訊，減少等待客服回覆。客服可用答不出清單補齊內容，把時間留給個案。",
+  hl:["網站貼上一行程式碼，右下角出現客服視窗","貼上原文，AI 整理知識稿；發布前試問，可下架或回復舊版","不處理訂單、退款與醫療、法律、財務等高風險建議；重要資訊建議由真人確認"],
+  links:[["MiniBot 介紹","https://yodm.tw/minibot"]]},
+ {id:"p07",cat:"mkt",name:"AI 導購",sub:"客服進階版",
+  pain:"品項多、促銷常換，顧客找不到合適且有貨的商品",out:"推薦合適商品或搭配組合，讓顧客更快下單",tags:["商品推薦","搭配組合"],
+  fn:"依顧客需求、店家現行優惠與可用庫存資料推薦商品，並引導至商品頁。",
+  who:["品牌、零售店家與製造商。","品項多、促銷常更換，或顧客想找符合用途且有貨的商品。"],
+  gain:"為顧客推薦合適商品或搭配組合（如配餐、組合優惠），降低顧客與客服的來回詢問與決策時間，讓顧客更快下單。",
+  hl:[], links:[["MiniBot 介紹","https://yodm.tw/minibot"]]},
+ {id:"p08",cat:"consult",name:"招募流程",sub:"與選才設計",
+  pain:"多人面試，各自問法與評分標準不同",out:"主管用同一把尺面試與評分",tags:["結構化面試","評分表"],
+  fn:"顧問訪談用人主管，釐清職務輪廓與關鍵能力，產出職缺文案、結構化面試題與評分表。",
+  who:["人資與用人主管。","同一職缺由多人面試，各自問法與評分標準不同，錄取後才發現不適任。"],
+  gain:"主管用同一把尺面試與評分，依職務標準比較候選人，減少憑印象錄取與反覆討論。",
+  hl:[], links:[]},
+ {id:"p09",cat:"consult",name:"職場霸凌",sub:"與不法侵害預防",
+  pain:"要建立職場霸凌等不法侵害的預防與處理機制",out:"事件發生時，主管與人資能依分工接手",tags:["律師講座","申訴流程"],
+  fn:"專業律師提供主管教育講座，並協助風險盤點、通報與申訴流程及主管應對指引，必要時協助處理法律事項。",
+  who:["人資、職安與管理主管。","企業要建立職場霸凌等不法侵害的預防與處理機制。"],
+  gain:"建立積極預防機制，且發生事件時，主管與人資能依分工接手，知道何時請律師介入，減少延誤與反覆轉交。",
+  hl:[], links:[]},
+ {id:"p10",cat:"consult",name:"補助案規劃",sub:"與轉型支援",
+  pain:"有轉型計畫，想搭配政府資源推動",out:"把想做的事整理成可申請、可執行的計畫",tags:["補助資源盤點","經費規劃"],
+  fn:"依企業計畫或需求盤點補助資源，規劃提案重點、經費用途與執行方向。",
+  who:[null,"已有營運改善、人才培育或轉型計畫，想搭配政府資源推動的企業。"],
+  gain:"把想做的事整理成可申請、可執行的計畫，為專案推動、員工培訓與轉型爭取更多預算。",
+  hl:[], links:[]},
+];
+const cat = id => CATS.find(c=>c.id===id);
+const prod = id => P.find(p=>p.id===id);
+const esc = s => String(s).replace(/[&<>"]/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m]));
+const state = {cat:"all", need:null};
+
+/* ---------- filter bar ---------- */
+const tabs=document.getElementById("tabs"), needsEl=document.getElementById("needs"), sel=document.getElementById("needSel");
+[{id:"all",label:"全部",n:P.length}].concat(CATS.map(c=>({id:c.id,label:c.label,n:P.filter(p=>p.cat===c.id).length}))).forEach(t=>{
+  const b=document.createElement("button"); b.type="button"; b.className="tab"; b.setAttribute("role","tab"); b.dataset.cat=t.id;
+  b.innerHTML=(t.id==="all"?"":`<span class="shape s-${t.id}"></span>`)+`${t.label} <span class="n">${t.n}</span>`;
+  b.addEventListener("click", ()=>{ state.cat=t.id; state.need=null; apply(); });
+  tabs.append(b); });
+sel.innerHTML=`<option value="">我想解決⋯（全部）</option>`+NEEDS.map(n=>`<option value="${n.id}">${esc(n.label)}</option>`).join("");
+sel.addEventListener("change", ()=>setNeed(sel.value||null));
+NEEDS.forEach(n=>{ const b=document.createElement("button"); b.type="button"; b.className="chip"; b.dataset.need=n.id; b.textContent=n.label;
+  b.addEventListener("click", ()=>setNeed(state.need===n.id?null:n.id)); needsEl.append(b); });
+document.getElementById("clear").addEventListener("click", ()=>{ state.cat="all"; state.need=null; apply(); });
+function setNeed(id){ state.need=id; if(id) state.cat="all"; apply(); }
+
+/* ---------- wall ---------- */
+const wall=document.getElementById("wall");
+CATS.forEach(c=>{
+  const g=document.createElement("div"); g.className="grp"+(P.filter(p=>p.cat===c.id).length===2?" two":""); g.dataset.cat=c.id; g.style.setProperty("--c", c.color);
+  g.innerHTML=`<div class="grp-h"><h3 class="gt"><span class="shape s-${c.id}"></span>${c.label}</h3><span class="code">${c.code} · ${P.filter(p=>p.cat===c.id).length} 項</span><p>${esc(c.line)}</p></div>`;
+  P.filter(p=>p.cat===c.id).forEach(p=>{
+    const b=document.createElement("button"); b.type="button"; b.className="card"; b.dataset.id=p.id; b.dataset.cat=p.cat; b.style.setProperty("--c", c.color);
+    b.setAttribute("aria-label", `${p.name} ${p.sub}：${p.out}。開啟完整說明`);
+    b.innerHTML=`<span class="edge" aria-hidden="true"></span>
+      <div class="c-top">${p.id.toUpperCase()}<span class="cat">${c.code}</span><span class="sp">${p.badge?`<span class="badge">${p.badge}</span>`:""}</span></div>
+      <div class="c-pain"><span class="lb">痛點</span>${esc(p.pain)}</div>
+      <h4 class="c-name">${esc(p.name)}<small>${esc(p.sub)}</small></h4>
+      <div class="c-out">${esc(p.out)}</div>
+      <span class="c-more">看完整說明 →</span>`;
+    b.addEventListener("pointermove", e=>{ const r=b.getBoundingClientRect(); b.style.setProperty("--mx",(e.clientX-r.left)+"px"); b.style.setProperty("--my",(e.clientY-r.top)+"px"); });
+    b.addEventListener("click", ()=>openDrawer(p.id, b));
+    g.append(b); });
+  wall.append(g); });
+
+function activeSet(){
+  const n=NEEDS.find(x=>x.id===state.need);
+  if(n) return new Set(n.ids);
+  if(state.cat!=="all") return new Set(P.filter(p=>p.cat===state.cat).map(p=>p.id));
+  return null;
+}
+function apply(){
+  tabs.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected", String(t.dataset.cat===state.cat)));
+  needsEl.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.need===state.need)));
+  sel.value=state.need||"";
+  const set=activeSet();
+  wall.querySelectorAll(".card").forEach(c=>{ const on=!set||set.has(c.dataset.id); c.classList.toggle("dim",!on); c.classList.toggle("hit", !!state.need && on); });
+  const cnt=document.getElementById("count");
+  cnt.innerHTML = set ? `符合 <b>${set.size}</b> / ${P.length} 項` : `共 <b>${P.length}</b> 項方案`;
+  document.getElementById("clear").hidden = !set;
+  document.getElementById("barCta").textContent = set ? `預約這 ${set.size} 項的情境示範` : "預約情境示範";
+  try{ localStorage.setItem("yodmap22", JSON.stringify(state)); }catch(e){}
+}
+
+/* ---------- drawer ---------- */
+const drawer=document.getElementById("drawer"), scrim=document.getElementById("scrim");
+let cur=null, back=null;
+function openDrawer(id, from){
+  const p=prod(id); if(!p) return; const c=cat(p.cat); cur=id;
+  if(from) back=from;
+  drawer.style.setProperty("--c", c.color);
+  document.getElementById("dCode").textContent=p.id.toUpperCase();
+  document.getElementById("dCat").textContent=`${c.label} · ${c.code}`;
+  document.getElementById("dTitle").textContent=p.name;
+  document.getElementById("dSub").textContent=p.sub+(p.badge?`　｜　${p.badge}`:"");
+  const who=p.who[0]?`<strong>${esc(p.who[0])}</strong>${esc(p.who[1])}`:esc(p.who[1]);
+  document.getElementById("dBody").innerHTML=`
+    <div class="step"><span class="no">01</span><div class="spec"><h3>適用對象與情境</h3><p>${who}</p></div></div>
+    <div class="step"><span class="no">02</span><div class="spec"><h3>功能</h3><p>${esc(p.fn)}</p></div></div>
+    <div class="step"><span class="no">03</span><div class="spec out"><h3>效益</h3><p>${esc(p.gain)}</p></div></div>
+    ${p.hl.length?`<div class="step"><span></span><div><div class="hl-h">產品頁重點</div><ul class="hl">${p.hl.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div>`:""}`;
+  document.getElementById("dFoot").innerHTML=
+    `<a class="btn btn-line" href="${LINE}" target="_blank" rel="noopener">加 LINE 預約示範 <span class="mono">@451dutnw</span></a>`+
+    p.links.map(([t,u])=>`<a class="btn" href="${u}" target="_blank" rel="noopener">${esc(t)} ↗</a>`).join("")+
+    `<button class="btn btn-ghost btn-sm" type="button" id="copyLink">複製這項的連結</button><span class="toast" id="toast">已複製</span>`;
+  document.getElementById("copyLink").addEventListener("click", async ()=>{
+    const url=location.href.split("#")[0]+"#"+id; const t=document.getElementById("toast");
+    try{ await navigator.clipboard.writeText(url); t.textContent="已複製"; }catch(e){ t.textContent=url; }
+    t.classList.add("on"); setTimeout(()=>t.classList.remove("on"),2200); });
+  drawer.classList.add("open"); scrim.classList.add("open"); drawer.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  if(location.hash!=="#"+id) history.replaceState(null,"","#"+id);
+  document.getElementById("dBody").scrollTop=0;
+  setTimeout(()=>document.getElementById("dClose").focus(),60);
+}
+function closeDrawer(){
+  drawer.classList.remove("open"); scrim.classList.remove("open"); drawer.setAttribute("aria-hidden","true");
+  document.body.style.overflow=""; cur=null;
+  if(/^#p\d\d$/.test(location.hash)) history.replaceState(null,"",location.pathname+location.search);
+  if(back&&back.focus) back.focus();
+}
+function step(d){ if(!cur) return; const i=P.findIndex(p=>p.id===cur); openDrawer(P[(i+d+P.length)%P.length].id); }
+document.getElementById("dClose").addEventListener("click", closeDrawer);
+document.getElementById("dPrev").addEventListener("click", ()=>step(-1));
+document.getElementById("dNext").addEventListener("click", ()=>step(1));
+scrim.addEventListener("click", closeDrawer);
+document.addEventListener("keydown", e=>{
+  if(!drawer.classList.contains("open")) return;
+  if(e.key==="Escape") return closeDrawer();
+  if(e.key==="ArrowLeft") return step(-1);
+  if(e.key==="ArrowRight") return step(1);
+  if(e.key==="Tab"){ const f=[...drawer.querySelectorAll("button,a[href]")]; const a=f[0], z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();} else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();} }
+});
+function route(){ const m=location.hash.match(/^#(p\d\d)$/); if(m&&prod(m[1])) openDrawer(m[1], wall.querySelector(`[data-id="${m[1]}"]`)); }
+window.addEventListener("hashchange", route);
+
+try{ const s=JSON.parse(localStorage.getItem("yodmap22")||"null"); if(s){ state.cat=s.cat||"all"; state.need=s.need||null; } }catch(e){}
+apply(); route();
+})();
+</script>
+</body>
+</html>
