@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YOD × WePredict 企業 AI 方案地圖</title>
-<meta name="description" content="讓企業的每一天多一份好幫手。依日常需求導入合適的 AI，從人才、作業流程到官網客服逐步切入。">
+<meta name="description" content="人才與營運 AI 理順內部，行銷 AI 對外接住客戶。">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:title" content="YOD AI解決方案和顧問支援服務">
-<meta property="og:description" content="讓企業的每一天多一份好幫手。依日常需求導入合適的 AI，從人才、作業流程到官網客服逐步切入。">
+<meta property="og:description" content="人才與營運 AI 理順內部，行銷 AI 對外接住客戶。">
 <meta property="og:url" content="https://devinc9.github.io/traitty/solutions/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,7 +184,8 @@ footer a{color:var(--fg-2);text-decoration:none;border-bottom:1px dotted var(--f
 .hl li{display:grid;grid-template-columns:16px 1fr;gap:8px;font-size:14.5px;line-height:1.6;color:var(--fg-2)}
 .hl li::before{content:"";width:12px;height:1px;background:var(--c);margin-top:11px}
 .hl-h{font:500 12px/1 var(--f-mono);color:var(--fg-3);letter-spacing:.08em;margin-top:8px}
-.d-foot{margin-top:auto;padding:14px 24px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:rgba(11,6,20,.4)}
+.d-foot{margin-top:auto;padding:12px 24px;border-top:1px solid var(--line);display:flex;gap:8px;flex-wrap:nowrap;align-items:center;background:rgba(11,6,20,.4)}
+.d-foot .btn{flex:none}
 .d-foot .note{flex-basis:100%;font-size:12.5px;color:var(--fg-3)}
 .toast{font:500 12px/1 var(--f-mono);color:#6BF0A4;opacity:0;transition:opacity .2s}
 .toast.on{opacity:1}
@@ -203,7 +204,18 @@ footer a{color:var(--fg-2);text-decoration:none;border-bottom:1px dotted var(--f
   .needs .chip{display:none}
   .needs-select{display:block;width:100%;padding:9px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line-2);color:var(--fg);font:500 14px var(--f-zh)}
   .nav .hide-sm{display:none}
-  .drawer{max-height:90vh;width:calc(100% - 20px)}
+  .drawer{max-height:88vh;width:calc(100% - 20px);border-radius:20px}
+  .d-head{padding:14px 16px 12px}
+  .d-title{font-size:24px;margin:10px 0 2px}
+  .d-sub{font-size:14px}
+  .ibtn{width:32px;height:32px}
+  .d-body{padding:14px 16px 16px;gap:10px}
+  .step{grid-template-columns:1fr;gap:0}
+  .step .no{display:none}
+  .spec{padding:12px 14px}
+  .spec p{font-size:15px;line-height:1.7}
+  .d-foot{padding:10px 16px;gap:6px}
+  .d-foot .btn{padding:8px 11px;font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -229,10 +241,10 @@ footer a{color:var(--fg-2);text-decoration:none;border-bottom:1px dotted var(--f
   <section class="wrap hero" aria-labelledby="h1">
     <div class="hero-l">
       <div class="kicker">ENTERPRISE AI · <b>4</b> 大類 · <b>10</b> 項方案</div>
-      <h1 id="h1">把<span class="k">人</span>帶好。<br>把<span class="k">事</span>做好。<br>讓<span class="k">服務</span>接得上。</h1>
+      <h1 id="h1">從<span class="k">內</span>到<span class="k">外</span>，<br><span class="k">AI</span> 幫您顧好公司</h1>
     </div>
     <div class="hero-r">
-      <p class="sub">讓企業的每一天多一份好幫手。依日常需求導入合適的 AI，從人才、作業流程到官網客服逐步切入。</p>
+      <p class="sub">人才與營運 AI 理順內部，行銷 AI 對外接住客戶</p>
       <div class="row">
         <a class="btn btn-line" href="https://line.me/R/ti/p/@451dutnw" target="_blank" rel="noopener">加 LINE 預約示範</a>
         <a class="btn" href="#solutions">看全部方案 ↓</a>
@@ -298,7 +310,7 @@ footer a{color:var(--fg-2);text-decoration:none;border-bottom:1px dotted var(--f
 </main>
 
 <footer class="wrap">
-  <div>YOD宥定 × WePredict ・ 企業 AI 方案地圖 v2.3</div>
+  <div>YOD宥定 × WePredict ・ 企業 AI 方案地圖 v2.5</div>
 </footer>
 
 <div class="scrim" id="scrim"></div>
@@ -349,64 +361,64 @@ const P = [
   who:["人資與部門主管。","新人適應不順，或團隊分工後反覆卡關、人員職務調動等。"],
   gain:"主管更快找到適合個人的溝通與分工方式，減少新人融入與團隊磨合時的反覆試錯，提高工作效率與留任機會。",
   hl:["5 大人才管理主題、28 項標準化 AI 管理工具，每項交付固定成果：題本、指南、手冊、談話腳本","個人使用說明書：工作動能來源、耗能情境與溝通建議","導入方案「帶人有底 90 天」：顧問陪同完成第一次試帶"],
-  links:[["AI 人才通介紹","https://yodm.tw/_talent_master"],["Traitty AI 實測","https://www.wepredict.io/traittyaidemo"]]},
+  link:"https://yodm.tw/_talent_master"},
  {id:"p02",cat:"talent",name:"PFM",sub:"績效指紋模型",
   pain:"想用自家數據改善關鍵職位的選才或留才",out:"依自家績效指標比較人才，及早找出留才風險",tags:["績效預測","離職風險"],
   fn:"以企業歷史績效或留任資料與人才特質，建立職務專屬模型，預測績效與離職風險。",
   who:[null,"已有業績、服務品質或留任紀錄的企業，想用自家數據改善關鍵職位的選才或留才。"],
   gain:"讓用人主管依自家績效指標比較人才，或及早找出值得關注的留才風險。",
   hl:["三步驟：定義本質（特質）→ 掌握數據（企業績效）→ 建立模型（機器學習）","面試前預測人才的銷售業績、顧客滿意度與離職風險","以九宮格進行人才盤點與團隊優化"],
-  links:[["WePredict 官網","https://www.wepredict.io"]]},
+  link:"https://www.wepredict.io"},
  {id:"p03",cat:"talent",name:"JCA",sub:"職位客製人才評鑑",
   pain:"通用評鑑難以反映實際工作差異",out:"面試前就能看出與職位相關的強項特質與適性分數",tags:["職位適合度評分","線上特質評鑑"],
   fn:"招募前依職務內容與企業需求設計線上特質評鑑，提供職位適合度評分與相關特質說明。",
   who:[null,"經常招募同一職位，或同一職稱有不同任務，通用評鑑難以反映實際工作差異。"],
   gain:"面試前就能看出與職位相關的強項特質與適性分數，讓不同主管依一致標準比較人選。",
-  hl:[], links:[["WePredict 官網","https://www.wepredict.io"]]},
+  hl:[], link:"https://www.wepredict.io/jca"},
  {id:"p04",cat:"ops",name:"AI Agent",sub:"企業助理",
   pain:"接單或請購要在多套工具間搬資料",out:"直接用 LINE 和 AI 對話，同一筆資料可接續下一步",tags:["LINE 交辦","開單與跟進"],
   fn:"建置銷售、採購、庫存與財會工作流。可以從訊息及文件擷取資料，接續系統查詢、開單、人工核准與追蹤。",
   who:["業務、採購、財會與營運。","接單或請購要在多套工具間搬資料，跨部門交接靠人工追問。"],
   gain:"直接用 LINE 和 AI 對話，同一筆資料可接續下一步，減少重打與漏接。主管能掌握卡在哪一關，業務也能更快回覆報價與進度。",
   hl:["輸入來源：LINE、Email、照片、語音、PDF、Excel","可沿用既有 ERP、進銷存、CRM 與工作工具","重要內容先呈現供確認，再執行"],
-  links:[["AI 企業助理介紹","https://yodm.tw/wp_agent"]]},
+  link:"https://yodm.tw/wp_agent"},
  {id:"p05",cat:"ops",name:"ERP 客製",sub:"與 AI 整合",
   pain:"訂單與庫存各自記錄，交期靠人工查問",out:"訂單、採購、庫存與出貨用同一套數字",tags:["系統串接","缺料與卡關可視"],
   fn:"客製化建置 ERP 並整合 AI 應用，串接既有系統中的訂單、採購、庫存及出貨。",
   who:["製造、批發與零售。","訂單與庫存各自記錄，交期靠人工查問。"],
   gain:"訂單、採購、庫存與出貨用同一套數字，不必跨系統重打與月底對帳；老闆隨時掌握缺料與卡關，交期與進貨決策不再靠問人。",
-  hl:[], links:[]},
+  hl:[], link:null},
  {id:"p06",cat:"mkt",name:"MiniBot",sub:"AI 小客服",
   pain:"客服經常重複回答規格、運費與付款方式",out:"訪客可先查常見資訊，減少等待客服回覆",tags:["官網問答","答不出清單"],
   fn:"把產品與服務說明整理成知識稿，支援試問、發布及官網問答。答不出時提示真人聯絡方式，並列入清單供補充。",
   who:["有官網的品牌與服務商。","客服經常重複回答商品規格、運費、付款方式或服務規則。"],
   gain:"訪客可先查常見資訊，減少等待客服回覆。客服可用答不出清單補齊內容，把時間留給個案。",
   hl:["網站貼上一行程式碼，右下角出現客服視窗","貼上原文，AI 整理知識稿；發布前試問，可下架或回復舊版","不處理訂單、退款與醫療、法律、財務等高風險建議；重要資訊建議由真人確認"],
-  links:[["MiniBot 介紹","https://yodm.tw/minibot"]]},
+  link:"https://yodm.tw/minibot"},
  {id:"p07",cat:"mkt",name:"AI 導購",sub:"客服進階版",
   pain:"品項多、促銷常換，顧客找不到合適且有貨的商品",out:"推薦合適商品或搭配組合，讓顧客更快下單",tags:["商品推薦","搭配組合"],
   fn:"依顧客需求、店家現行優惠與可用庫存資料推薦商品，並引導至商品頁。",
   who:["品牌、零售店家與製造商。","品項多、促銷常更換，或顧客想找符合用途且有貨的商品。"],
   gain:"為顧客推薦合適商品或搭配組合（如配餐、組合優惠），降低顧客與客服的來回詢問與決策時間，讓顧客更快下單。",
-  hl:[], links:[["MiniBot 介紹","https://yodm.tw/minibot"]]},
+  hl:[], link:"https://yodm.tw/minibot"},
  {id:"p08",cat:"consult",name:"招募流程",sub:"與選才設計",
   pain:"多人面試，各自問法與評分標準不同",out:"主管用同一把尺面試與評分",tags:["結構化面試","評分表"],
   fn:"顧問訪談用人主管，釐清職務輪廓與關鍵能力，產出職缺文案、結構化面試題與評分表。",
   who:["人資與用人主管。","同一職缺由多人面試，各自問法與評分標準不同，錄取後才發現不適任。"],
   gain:"主管用同一把尺面試與評分，依職務標準比較候選人，減少憑印象錄取與反覆討論。",
-  hl:[], links:[]},
+  hl:[], link:null},
  {id:"p09",cat:"consult",name:"職場霸凌",sub:"與不法侵害預防",
   pain:"要建立職場霸凌等不法侵害的預防與處理機制",out:"事件發生時，主管與人資能依分工接手",tags:["律師講座","申訴流程"],
   fn:"專業律師提供主管教育講座，並協助風險盤點、通報與申訴流程及主管應對指引，必要時協助處理法律事項。",
   who:["人資、職安與管理主管。","企業要建立職場霸凌等不法侵害的預防與處理機制。"],
   gain:"建立積極預防機制，且發生事件時，主管與人資能依分工接手，知道何時請律師介入，減少延誤與反覆轉交。",
-  hl:[], links:[]},
+  hl:[], link:null},
  {id:"p10",cat:"consult",name:"補助案規劃",sub:"與轉型支援",
   pain:"有轉型計畫，想搭配政府資源推動",out:"把想做的事整理成可申請、可執行的計畫",tags:["補助資源盤點","經費規劃"],
   fn:"依企業計畫或需求盤點補助資源，規劃提案重點、經費用途與執行方向。",
   who:[null,"已有營運改善、人才培育或轉型計畫，想搭配政府資源推動的企業。"],
   gain:"把想做的事整理成可申請、可執行的計畫，為專案推動、員工培訓與轉型爭取更多預算。",
-  hl:[], links:[]},
+  hl:[], link:null},
 ];
 const cat = id => CATS.find(c=>c.id===id);
 const prod = id => P.find(p=>p.id===id);
@@ -483,13 +495,13 @@ function openDrawer(id, from){
     <div class="step"><span class="no">03</span><div class="spec out"><h3>效益</h3><p>${esc(p.gain)}</p></div></div>
     ${p.hl.length?`<div class="step"><span></span><div><div class="hl-h">產品頁重點</div><ul class="hl">${p.hl.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div>`:""}`;
   document.getElementById("dFoot").innerHTML=
-    `<a class="btn btn-line" href="${LINE}" target="_blank" rel="noopener">加 LINE 預約示範 <span class="mono">@451dutnw</span></a>`+
-    p.links.map(([t,u])=>`<a class="btn" href="${u}" target="_blank" rel="noopener">${esc(t)} ↗</a>`).join("")+
-    `<button class="btn btn-ghost btn-sm" type="button" id="copyLink">複製這項的連結</button><span class="toast" id="toast">已複製</span>`;
-  document.getElementById("copyLink").addEventListener("click", async ()=>{
-    const url=location.href.split("#")[0]+"#"+id; const t=document.getElementById("toast");
-    try{ await navigator.clipboard.writeText(url); t.textContent="已複製"; }catch(e){ t.textContent=url; }
-    t.classList.add("on"); setTimeout(()=>t.classList.remove("on"),2200); });
+    `<a class="btn btn-sm btn-line" href="${LINE}" target="_blank" rel="noopener">加 LINE 預約</a>`+
+    (p.link?`<a class="btn btn-sm" href="${p.link}" target="_blank" rel="noopener">詳細說明 ↗</a>`:"")+
+    `<button class="btn btn-sm btn-ghost" type="button" id="copyLink">複製連結</button>`;
+  document.getElementById("copyLink").addEventListener("click", async e=>{
+    const b=e.currentTarget, url=location.href.split("#")[0]+"#"+id;
+    try{ await navigator.clipboard.writeText(url); b.textContent="已複製 ✓"; }catch(err){ b.textContent="無法複製"; }
+    setTimeout(()=>{ b.textContent="複製連結"; },2000); });
   drawer.classList.add("open"); scrim.classList.add("open"); drawer.setAttribute("aria-hidden","false");
   document.body.style.overflow="hidden";
   if(location.hash!=="#"+id) history.replaceState(null,"","#"+id);
