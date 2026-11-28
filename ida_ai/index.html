@@ -815,6 +815,21 @@ img { max-width: 100%; }
 .ck-rec > a { margin-left: auto; font-size: 12px; color: var(--accent-text); }
 .ck-rec-s { flex-basis: 100%; font-size: 12.5px; color: var(--ink-2); }
 .ck-tel { white-space: nowrap; color: var(--accent-text); }
+/* ── v18：申請紀錄改為「複製統編，到官網查詢」 ── */
+.ck-rec-id { font-size: 18px; font-weight: 700; color: var(--ink); letter-spacing: .04em; }
+.ck-rec .cta.ck-rec-go {
+  color: #fff;
+  flex-basis: 100%;
+  justify-content: center;
+  margin: 2px 0 0;
+  font-size: 15px;
+  text-decoration: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ck-rec .cta.ck-rec-go { color: var(--bg); }
+}
+:root[data-theme="dark"] .ck-rec .cta.ck-rec-go { color: var(--bg); }
+.ck-rec-s.done { color: var(--ok); font-weight: 700; }
 </style>
 
 </head>
@@ -1014,24 +1029,61 @@ var RELAY_URL = "https://script.google.com/macros/s/AKfycbyvO0YvloFsmLT-PuDBTyGm
     }
     return box;
   }
-  /* 輔導團【製造業】申請紀錄（轉接程式 v2 的 record 欄位；舊版轉接程式沒有此欄位時不顯示） */
+  /* 輔導團【製造業】申請紀錄
+     v18：輔導團網站擋掉轉接程式（回「Request Rejected」），轉接程式 v3 回 state=error。
+     此時改為按鈕：複製統編，並開啟官網、直接捲到「【製造業】查詢申請紀錄」查詢框（文字定位連結）。
+     若日後恢復正常（yes/no/bad），照舊顯示結果。 */
   var EII = "https://eii.nat.gov.tw/moeai-plus/";
-  function recordLine(rec){
+  var EII_Q = EII + "#:~:text=" + encodeURIComponent("查詢申請紀錄");
+  function copyText(t){
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(t).then(function(){ return true; }, function(){ return legacyCopy(t); });
+    }
+    return Promise.resolve(legacyCopy(t));
+  }
+  function legacyCopy(t){
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, t.length);
+      var ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) { return false; }
+  }
+  function recordLine(rec, id){
     if (!rec || !rec.state) return null;
     var b = el("div", "ck-rec " + rec.state);
     b.appendChild(el("span", "ck-rec-l", "輔導團申請紀錄"));
-    var txt = rec.state === "error" ? "暫時查不到" : (rec.message || (rec.state === "yes" ? "已有申請紀錄" : "尚無申請紀錄"));
+    if (rec.state === "error") {
+      if (!id) return null;
+      b.appendChild(el("span", "ck-rec-id mono", id));
+      var go = el("a", "cta ck-rec-go", "複製統編，到官網查詢 ↗");
+      go.href = EII_Q; go.target = "_blank"; go.rel = "noopener";
+      var s = el("span", "ck-rec-s", "會在新分頁開啟輔導團網站的查詢框，貼上統編後按「查詢」即可。");
+      go.addEventListener("click", function(){
+        copyText(id).then(function(ok){
+          s.className = ok ? "ck-rec-s done" : "ck-rec-s";
+          s.textContent = ok ? "✓ 已複製統編 " + id + "，到官網查詢框貼上（手機：長按 → 貼上）後按「查詢」。"
+                             : "請在官網查詢框輸入統編 " + id + " 後按「查詢」。";
+        });
+      });
+      b.appendChild(go);
+      b.appendChild(s);
+      return b;
+    }
+    var txt = rec.message || (rec.state === "yes" ? "已有申請紀錄" : "尚無申請紀錄");
     b.appendChild(el("span", "ck-rec-b", (rec.state === "yes" ? "✓ " : "") + txt));
     var a = el("a", null, "到輔導團網站查詢");
-    a.href = EII; a.target = "_blank"; a.rel = "noopener";
+    a.href = EII_Q; a.target = "_blank"; a.rel = "noopener";
     b.appendChild(a);
     if (rec.state === "yes") {
-      var s = el("span", "ck-rec-s", "如需確認申請進度，請洽計畫辦公室 ");
+      var s2 = el("span", "ck-rec-s", "如需確認申請進度，請洽計畫辦公室 ");
       var tel = el("a", "ck-tel", "0800-023-800");
       tel.href = "tel:0800023800";
-      s.appendChild(tel);
-      s.appendChild(document.createTextNode("。"));
-      b.appendChild(s);
+      s2.appendChild(tel);
+      s2.appendChild(document.createTextNode("。"));
+      b.appendChild(s2);
     }
     return b;
   }
@@ -1049,7 +1101,7 @@ var RELAY_URL = "https://script.google.com/macros/s/AKfycbyvO0YvloFsmLT-PuDBTyGm
     relay("id=" + encodeURIComponent(id)).then(function(j){
       if (my !== seq) return;
       out.textContent = "";
-      var rl = recordLine(j.record);
+      var rl = recordLine(j.record, j.id || id);
       if (!j.found) {
         out.appendChild(msgCard("none", "查無統編 " + id + " 的公司登記資料",
           "請確認統編是否正確。若為行號（商業登記），請改用下方手動判讀。"));
